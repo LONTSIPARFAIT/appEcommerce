@@ -314,7 +314,7 @@ export default function ShopBanner(): JSX.Element {
       {/* Enhanced navigation arrows */}
       <button
         onClick={goToPrevSlide}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-white/30 hover:bg-white text-gray-800 p-3 md:p-4 rounded-full backdrop-blur-sm transition-all duration-300 border border-white/60 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-white/30 hover:bg-white text-gray-800 p-3 md:p-4 rounded-full backdrop-blur-sm transition-all duration-300 border border-white/60 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
         aria-label="Previous slide"
         type="button"
       >
@@ -323,7 +323,7 @@ export default function ShopBanner(): JSX.Element {
 
       <button
         onClick={goToNextSlide}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 bg-white/30 hover:bg-white text-gray-800 p-3 md:p-4 rounded-full backdrop-blur-sm transition-all duration-300 border border-white/60 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 bg-white/30 hover:bg-white text-gray-800 p-3 md:p-4 rounded-full backdrop-blur-sm transition-all duration-300 border border-white/60 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
         aria-label="Next slide"
         type="button"
       >
@@ -346,7 +346,7 @@ export default function ShopBanner(): JSX.Element {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`h-2 rounded-full transition-all duration-300 focus:outline-none ${
+                className={`cursor-pointer h-2 rounded-full transition-all duration-300 focus:outline-none ${
                   currentSlide === index
                     ? "bg-blue-600 w-8"
                     : "bg-white/50 hover:bg-white/80 w-2"
