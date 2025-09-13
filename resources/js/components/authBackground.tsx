@@ -2,7 +2,7 @@ import { Link } from '@inertiajs/react';
 
 export default function AuthBackground() {
     return (
-        <div className="relative h-full w-full overflow-hidden bg-red-300">
+        <div className="relative h-full w-full overflow-hidden bg-orange-300">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <img src="/auth-bg.jpg" alt="Background" style={{ objectFit: 'cover', objectPosition: 'center' }} className="opacity-5" />
