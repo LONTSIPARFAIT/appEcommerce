@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "@inertiajs/react";
 
 interface CategoryItem {
   id: number;
@@ -267,7 +268,7 @@ export default function ShopCategories() {
           >
             <div className="w-full grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-4 md:gap-6">
               {visibleCategories().map((category, idx) => (
-                <a
+                <Link prefetch
                   key={category.id}
                   href={`/category/${category.slug}`}
                   className="flex flex-col items-center group"
@@ -303,7 +304,7 @@ export default function ShopCategories() {
                       {category.name}
                     </h3>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -333,13 +334,13 @@ export default function ShopCategories() {
           }`}
           style={{ transitionDelay: "0.4s" }}
         >
-          <a
+          <Link prefetch
             href="/categories"
             className="inline-flex items-center px-6 py-2.5 rounded-full bg-white border border-amber-200 text-amber-700 hover:bg-amber-50 hover:text-amber-800 hover:border-amber-300 transition-all shadow-sm hover:shadow hover:scale-105 active:scale-95"
           >
             <span className="font-medium">View All Categories</span>
             <ChevronRight className="h-4 w-4 ml-1" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
