@@ -5,7 +5,9 @@ export default function home() {
   return (
     <ShopFrontLayout>
         <div className="min-h-screen">
-            <ShopBanner />
+            <div className="container mx-auto max-w-6xl">
+                <ShopBanner />
+            </div>
         </div>
     </ShopFrontLayout>
   )

@@ -30,12 +30,12 @@ interface CarouselSlide {
 const carouselData: CarouselSlide[] = [
   {
     id: 1,
-    title: "Our Newest & Trendy Shoes Collection",
-    subtitle: "Discover Your Own Shoes",
+    title: "Notre toute nouvelle collection de chaussures tendance",
+    subtitle: "Découvrez vos propres chaussures",
     description:
-      "Step into style with our latest footwear designs. Premium comfort meets contemporary fashion. Handcrafted with the finest materials for lasting quality.",
-    buttonText: "Shop Collection",
-    secondaryButtonText: "View Lookbook",
+      "Entrez dans le style avec nos dernières créations de chaussures. Un confort premium rencontre la mode contemporaine. Fabriquées à la main avec les meilleurs matériaux pour une qualité durable.",
+    buttonText: "Achetez la collection",
+    secondaryButtonText: "Voir le lookbook",
     buttonLink: "/collections/shoes",
     secondaryButtonLink: "/lookbooks/shoes-2025",
     imageSrc:
@@ -43,19 +43,19 @@ const carouselData: CarouselSlide[] = [
     textColor: "text-gray-900",
     overlayColor: "from-white/80 to-white/40",
     alignment: "left",
-    badge: "NEW ARRIVAL",
+    badge: "NOUVEL ARRIVAGE",
     price: "$299",
     originalPrice: "$399",
     discount: 25,
   },
   {
     id: 2,
-    title: "Elegant Watches For Every Occasion",
-    subtitle: "Timeless Elegance",
+    title: "Montres élégantes pour chaque occasion",
+    subtitle: "Élégance intemporelle",
     description:
-      "Precision craftsmanship and sophisticated design. Our watches make a statement without saying a word. Each timepiece represents generations of watchmaking expertise.",
-    buttonText: "View Collection",
-    secondaryButtonText: "Learn More",
+      "L'artisanat précis et le design sophistiqué. Nos montres font une déclaration sans dire un mot. Chaque pièce représente des générations d'expertise horlogère.",
+    buttonText: "Voir la collection",
+    secondaryButtonText: "En savoir plus",
     buttonLink: "/collections/watches",
     secondaryButtonLink: "/about/craftsmanship",
     imageSrc:
@@ -70,12 +70,12 @@ const carouselData: CarouselSlide[] = [
   },
   {
     id: 3,
-    title: "Premium Bags & Accessories",
-    subtitle: "Carry Your Style",
+    title: "Sacs et accessoires de luxe",
+    subtitle: "Affichez votre style",
     description:
-      "Handcrafted with premium materials. Our bags combine functionality with uncompromising style. Designed for those who appreciate the finest details and superior quality.",
-    buttonText: "Explore Collection",
-    secondaryButtonText: "View Materials",
+      "Fabriqués à la main avec des matériaux de qualité supérieure. Nos sacs allient fonctionnalité et style sans compromis. Conçus pour ceux qui apprécient les détails les plus fins et une qualité supérieure.",
+    buttonText: "Explorer la collection",
+    secondaryButtonText: "Voir les matériaux",
     buttonLink: "/collections/bags",
     secondaryButtonLink: "/materials/premium-leather",
     imageSrc:
