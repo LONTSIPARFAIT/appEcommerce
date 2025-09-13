@@ -28,7 +28,7 @@ const CATEGORIES = [
   "Toys & Games",
 ];
 
-export default function NavBarFive() {
+export default function ShopHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchMobileOpen, setSearchMobileOpen] = useState(false);
@@ -50,7 +50,7 @@ export default function NavBarFive() {
 
   // Close search overlay when Escape key is pressed
   useEffect(() => {
-    const handleKeyDown = (e: any) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && searchMobileOpen) {
         setSearchMobileOpen(false);
       }
