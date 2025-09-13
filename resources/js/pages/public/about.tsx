@@ -1,3 +1,4 @@
+import { Link } from "@inertiajs/react";
 
 
 export default function About() {
@@ -5,9 +6,8 @@ export default function About() {
     <div>
       <h2>About Page</h2>
       <a href="/">Go back</a>
-      <Link href="/">
-        d
-      </Link>
+      <Link prefetch href="/">Go Home</Link>
+      <Link prefetch href={route('home')}>Go Home</Link>
     </div>
   );
 }
