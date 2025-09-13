@@ -7,7 +7,6 @@ import {
   ShoppingCart,
   Share2,
   ChevronRight,
-  ChevronLeft,
   Check,
 } from "lucide-react";
 
@@ -30,14 +29,7 @@ interface Product {
   inStock: boolean;
 }
 
-interface SimilarProduct {
-  id: string;
-  name: string;
-  price: number;
-  rating: number;
-  reviewCount: number;
-  image: string;
-}
+
 
 interface FrequentlyBoughtTogether {
   id: string;
