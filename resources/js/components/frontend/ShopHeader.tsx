@@ -74,7 +74,7 @@ export default function ShopHeader() {
   return (
     <header
       className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
-        isScrolled ? "bg-transparent shadow-md" : "bg-orange-50 "
+        isScrolled ? "bg-orange-50 shadow-md" : "bg-orange-100 "
       }`}
     >
       {/* Top announcements/offers bar */}

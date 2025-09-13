@@ -171,7 +171,7 @@ export default function ShopBanner(): JSX.Element {
 
   return (
     <section
-      className="relative w-full overflow-hidden h-screen max-h-[800px] min-h-[600px]"
+      className="relative w-full overflow-hidden h-screen max-h-[800px] min-h-[600px] rounded-2xl mt-8 border border-gray-300 shadow"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
@@ -224,7 +224,7 @@ export default function ShopBanner(): JSX.Element {
                   }`}
                 >
                   <div className="backdrop-blur-sm bg-white/30 p-6 md:p-8 lg:p-10 rounded-2xl shadow-xl border border-white/50">
-                    {/* Badge */}
+                    Badge
                     {slide.badge && (
                       <div className="inline-flex items-center gap-1 mb-4 px-3 py-1 bg-black/70 rounded-full">
                         <Star className="h-3 w-3 text-amber-400 fill-amber-400" />
