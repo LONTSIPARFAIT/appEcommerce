@@ -4,7 +4,7 @@ export default function About() {
     <div>
       <h2>About</h2>
       <Link>
-        f
+        d
       </Link>
     </div>
   );
