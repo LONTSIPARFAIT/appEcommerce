@@ -12,7 +12,7 @@ export default function AuthBackground() {
             <div className="relative z-10 flex h-full flex-col p-8">
                 <div className="mb-6">
                     <Link className="text-sm font-bold text-white uppercase" href="/">
-                        Simple UI
+                        ECommerce APP
                     </Link>
                 </div>
 
