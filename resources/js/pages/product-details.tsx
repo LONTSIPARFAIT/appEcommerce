@@ -1,6 +1,7 @@
 // ProductDetail.tsx
 import { SimilarProduct } from '@/types/products'
 import { useState } from "react";
+import ShopFrontLayout from '@/layouts/shop-front-layout'
 import {
   Star,
   Heart,
@@ -167,7 +168,7 @@ const ProductDetails = () => {
   };
 
   return (
-   <ChopFrontLayout>
+   <ShopFrontLayout>
          <div className="max-w-6xl mx-auto px-4 py-8 bg-white">
       {/* Breadcrumb */}
       <nav className="flex mb-8 text-sm">
@@ -475,7 +476,7 @@ const ProductDetails = () => {
       {/* Similar Products */}
       <SimillarProducts similarProducts={similarProducts} />
     </div>
-    </ChopFrontLayout>
+    </ShopFrontLayout>
   );
 };
 
