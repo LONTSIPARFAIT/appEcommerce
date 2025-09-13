@@ -7,7 +7,9 @@ export default function home() {
     <ShopFrontLayout>
         <div className="min-h-screen">
             <div className="container mx-auto max-w-6xl">
-                <ShopBanner />
+                <div className="py-16">
+                    <ShopBanner />
+                </div>
                 <ShopCategories />
             </div>
         </div>
