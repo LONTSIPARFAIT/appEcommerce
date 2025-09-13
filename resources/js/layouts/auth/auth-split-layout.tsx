@@ -2,7 +2,7 @@ import AppLogoIcon from '@/components/app-logo-icon';
 import AuthBackground from '@/components/authBackground';
 import { home } from '@/routes';
 // import { type SharedData } from '@/types';
-import { Link,  } from '@inertiajs/react';
+import { Link, } from '@inertiajs/react';
 import { type PropsWithChildren } from 'react';
 
 interface AuthLayoutProps {
@@ -14,7 +14,7 @@ export default function AuthSplitLayout({ children, title, description }: PropsW
     // const { name, quote } = usePage<SharedData>().props;
 
     return (
-        <div className="relative bg-black grid h-dvh flex-col items-center justify-center px-8 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
+        <div className="relative grid h-dvh flex-col items-center justify-center px-8 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
             <AuthBackground />
             {/* <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
                 <div className="absolute inset-0 bg-zinc-900" />
