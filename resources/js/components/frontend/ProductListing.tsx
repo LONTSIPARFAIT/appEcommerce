@@ -366,14 +366,14 @@ const ProductListing = () => {
         <div className="flex space-x-3">
           <button
             onClick={goToPrev}
-            className="p-3 rounded-full bg-white shadow-sm hover:shadow border border-gray-200 hover:border-gray-300 transition-all duration-200"
+            className="cursor-pointer p-3 rounded-full bg-white shadow-sm hover:shadow border border-gray-200 hover:border-gray-300 transition-all duration-200"
             aria-label="Previous products"
           >
             <ChevronLeft size={18} className="text-gray-700" />
           </button>
           <button
             onClick={goToNext}
-            className="p-3 rounded-full bg-white shadow-sm hover:shadow border border-gray-200 hover:border-gray-300 transition-all duration-200"
+            className="cursor-pointer p-3 rounded-full bg-white shadow-sm hover:shadow border border-gray-200 hover:border-gray-300 transition-all duration-200"
             aria-label="Next products"
           >
             <ChevronRight size={18} className="text-gray-700" />

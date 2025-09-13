@@ -11,6 +11,8 @@ export default function home() {
                 <ShopBanner />
                 <div className="py-16">
                     <ShopCategories />  
+                </div>
+                <div className="py-8">
                     <ProductListing />  
                 </div>
             </div>
