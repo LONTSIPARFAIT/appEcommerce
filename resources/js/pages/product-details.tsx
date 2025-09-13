@@ -9,6 +9,7 @@ import {
   ChevronRight,
   Check,
 } from "lucide-react";
+import SimillarProducts from "@/components/frontend/SimillarProducts";
 
 // Types
 interface Product {
@@ -470,7 +471,7 @@ const ProductDetails = () => {
       </div>
 
       {/* Similar Products */}
-      <SimillarProducts />
+      <SimillarProducts similarProducts={similarProducts} />
     </div>
   );
 };
