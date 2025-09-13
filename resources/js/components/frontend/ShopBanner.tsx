@@ -191,7 +191,6 @@ export default function ShopBanner(): JSX.Element {
               <image
                 src={slide.imageSrc}
                 alt={`${slide.title}`}
-                fill
                 className="object-cover"
                 sizes="100vw"
                 priority={index === 0}
