@@ -1,7 +1,7 @@
-import SimilarProducts from '@/types/products'
+import {SimilarProduct} from '@/types/products'
 import { Star, ChevronRight, ChevronLeft, } from "lucide-react";
 
-export default function SimillarProducts({similarProducts}:{similarProducts:SimilarProducts[] }) {
+export default function SimillarProducts({similarProducts}:{similarProducts:SimilarProduct[] }) {
   return (
     <div>
       {/* Similar Products */}

@@ -1,5 +1,5 @@
-"use client";
 // ProductDetail.tsx
+import { SimilarProduct } from '@/types/products'
 import { useState } from "react";
 import {
   Star,
@@ -142,6 +142,7 @@ const ProductDetails = () => {
   const [selectedSize, setSelectedSize] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [bundleItems, setBundleItems] = useState<string[]>([product.id]);
+  
 
   // Function to toggle bundle items
   const toggleBundleItem = (id: string) => {
@@ -166,7 +167,8 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 bg-white">
+   <ChopFrontLayout>
+         <div className="max-w-6xl mx-auto px-4 py-8 bg-white">
       {/* Breadcrumb */}
       <nav className="flex mb-8 text-sm">
         <a href="#" className="text-gray-500 hover:text-gray-700">
@@ -473,6 +475,7 @@ const ProductDetails = () => {
       {/* Similar Products */}
       <SimillarProducts similarProducts={similarProducts} />
     </div>
+    </ChopFrontLayout>
   );
 };
 
