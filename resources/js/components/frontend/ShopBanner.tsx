@@ -187,12 +187,11 @@ export default function ShopBanner(): JSX.Element {
           >
             {/* Full-width background image */}
             <div className="absolute inset-0 w-full h-full">
-              <image
+              <img
                 src={slide.imageSrc}
                 alt={`${slide.title}`}
                 className="object-cover"
                 sizes="100vw"
-                priority={index === 0}
               />
               {/* <Image
                 src={slide.imageSrc}
