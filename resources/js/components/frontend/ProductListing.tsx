@@ -345,7 +345,7 @@ const ProductListing = () => {
   }, [currentIndex, goToNext, products.length, visibleProducts]);
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-8 bg-gradient-to-b from-gray-50 to-white">
+    <div className="w-full rounded-3xl max-w-7xl mx-auto px-4 py-8 bg-gradient-to-b from-gray-50 to-white">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
         <div>
           <div className="inline-block px-3 py-1 bg-red-100 text-red-600 rounded-full text-xs font-semibold tracking-wide mb-2">
