@@ -11,7 +11,7 @@ interface CategoryItem {
   color: string;
 }
 
-export default function CategoryOne() {
+export default function ShopCategories() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [sliding, setSliding] = useState(false);
   const [visibleItems, setVisibleItems] = useState(6);

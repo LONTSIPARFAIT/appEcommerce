@@ -1,3 +1,4 @@
+import ShopCategories from '@/components/frontend/ShopCategories'
 import ShopBanner from '@/components/frontend/ShopBanner'
 import ShopFrontLayout from '@/layouts/shop-front-layout'
 
@@ -7,6 +8,7 @@ export default function home() {
         <div className="min-h-screen">
             <div className="container mx-auto max-w-6xl">
                 <ShopBanner />
+                <ShopCategories />
             </div>
         </div>
     </ShopFrontLayout>
