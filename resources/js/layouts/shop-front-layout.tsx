@@ -1,14 +1,22 @@
 
 import ShopFooter from '@/components/dashboard/ShopFooter'
 import ShopHeader from '@/components/dashboard/ShopHeader'
+import { ThemeProvider } from '@/components/theme-provider'
 import React, { ReactNode } from 'react'
 
 export default function ShopFrontLayout({children}:{children:ReactNode}) {
   return (
     <div>
-        <ShopHeader />
-            {children}
-        <ShopFooter />
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ShopHeader />
+                {children}
+            <ShopFooter />
+        </ThemeProvider>
     </div>
   )
 }
