@@ -1,7 +1,6 @@
 "use client";
 // ProductDetail.tsx
 import { useState } from "react";
-import Image from "next/image";
 import {
   Star,
   Heart,
@@ -144,7 +143,7 @@ const frequentlyBoughtTogether: FrequentlyBoughtTogether[] = [
   },
 ];
 
-const ProductDetailOne = () => {
+const ProductDetails = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState(0);
   const [selectedSize, setSelectedSize] = useState(0);
@@ -196,14 +195,20 @@ const ProductDetailOne = () => {
         {/* Product Images */}
         <div className="space-y-6">
           <div className="relative aspect-square overflow-hidden rounded-xl bg-gray-100">
-            <Image
+            <img
+              src={product.images[selectedImage]}
+              alt={product.name}
+              className="object-cover transition-all duration-300 hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            {/* <Image
               src={product.images[selectedImage]}
               alt={product.name}
               fill
               className="object-cover transition-all duration-300 hover:scale-105"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
-            />
+            /> */}
           </div>
 
           <div className="flex space-x-4 overflow-auto pb-2">
@@ -217,10 +222,9 @@ const ProductDetailOne = () => {
                     : "ring-1 ring-gray-200"
                 }`}
               >
-                <Image
+                <img
                   src={image}
                   alt={`${product.name} - View ${index + 1}`}
-                  fill
                   className="object-cover"
                   sizes="80px"
                 />
@@ -400,10 +404,9 @@ const ProductDetailOne = () => {
                     onChange={() => toggleBundleItem(product.id)}
                     className="absolute top-2 left-2 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 z-10"
                   />
-                  <Image
+                  <img
                     src={product.images[0]}
                     alt={product.name}
-                    fill
                     className="object-cover"
                     sizes="96px"
                   />
@@ -421,10 +424,9 @@ const ProductDetailOne = () => {
                         onChange={() => toggleBundleItem(item.id)}
                         className="absolute top-2 left-2 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 z-10"
                       />
-                      <Image
+                      <img
                         src={item.image}
                         alt={item.name}
-                        fill
                         className="object-cover"
                         sizes="96px"
                       />
@@ -493,7 +495,7 @@ const ProductDetailOne = () => {
           {similarProducts.map((product) => (
             <a href="#" key={product.id} className="group block">
               <div className="aspect-square w-full overflow-hidden rounded-lg bg-gray-100">
-                <Image
+                <img
                   src={product.image}
                   alt={product.name}
                   width={500}
@@ -536,4 +538,4 @@ const ProductDetailOne = () => {
   );
 };
 
-export default ProductDetailOne;
+export default ProductDetails;
