@@ -57,8 +57,8 @@ export default function Welcome() {
                                     </span>
                                     <span>
                                         Read the
-                                        <a
-                                            href="/about"
+                                        <Link
+                                            href={"/about"}
                                             target="_blank"
                                             className="ml-1 inline-flex items-center space-x-1 font-medium text-[#f53003] underline underline-offset-4 dark:text-[#FF4433]"
                                         >
@@ -77,7 +77,7 @@ export default function Welcome() {
                                                     strokeLinecap="square"
                                                 />
                                             </svg>
-                                        </a>
+                                        </Link>
                                     </span>
                                 </li>
                                 <li className="relative flex items-center gap-4 py-2 before:absolute before:top-0 before:bottom-1/2 before:left-[0.4rem] before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A]">
