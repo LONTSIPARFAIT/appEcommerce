@@ -64,7 +64,7 @@ export default function ShopHeader() {
     <header className=" w-full">
       <nav
         className={cn(
-          "flex flex-col w-full bg-white transition-all duration-300",
+          "flex flex-col w-full bg-black transition-all duration-300",
           isScrolled && "shadow-md"
         )}
       >
