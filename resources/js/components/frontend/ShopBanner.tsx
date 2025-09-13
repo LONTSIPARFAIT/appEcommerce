@@ -1,15 +1,8 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import {
-  ChevronLeft,
-  ChevronRight,
-  ShoppingBag,
-  ArrowRight,
-  Star,
-} from "lucide-react";
+import { Link } from "@inertiajs/react";
+import { useState, useEffect, useCallback, useRef, JSX } from "react";
+import { ChevronLeft, ChevronRight, ShoppingBag, ArrowRight, Star} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 // Enhanced types for carousel data
@@ -195,7 +188,7 @@ export default function BannerOne(): JSX.Element {
           >
             {/* Full-width background image */}
             <div className="absolute inset-0 w-full h-full">
-              <Image
+              <image
                 src={slide.imageSrc}
                 alt={`${slide.title}`}
                 fill
@@ -203,6 +196,14 @@ export default function BannerOne(): JSX.Element {
                 sizes="100vw"
                 priority={index === 0}
               />
+              {/* <Image
+                src={slide.imageSrc}
+                alt={`${slide.title}`}
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority={index === 0}
+              /> */}
 
               {/* Enhanced gradient overlay for better text readability */}
               <div
