@@ -32,28 +32,28 @@ export default function ShopFooter() {
               query? contact us we are here for you.
             </p>
             <div className="flex space-x-4">
-              <Link
+              <Link prefetch
                 href="#"
                 className="rounded-full bg-white p-2 hover:bg-white/90"
               >
                 <Twitter className="h-4 w-4 text-[#6366F1]" />
                 <span className="sr-only">Twitter</span>
               </Link>
-              <Link
+              <Link prefetch
                 href="#"
                 className="rounded-full bg-white p-2 hover:bg-white/90"
               >
                 <Instagram className="h-4 w-4 text-[#6366F1]" />
                 <span className="sr-only">Instagram</span>
               </Link>
-              <Link
+              <Link prefetch
                 href="#"
                 className="rounded-full bg-white p-2 hover:bg-white/90"
               >
                 <Linkedin className="h-4 w-4 text-[#6366F1]" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
-              <Link
+              <Link prefetch
                 href="#"
                 className="rounded-full bg-white p-2 hover:bg-white/90"
               >
@@ -74,16 +74,16 @@ export default function ShopFooter() {
             <div className="space-y-4">
               <h3 className="text-lg font-bold">Quick Links</h3>
               <nav className="flex flex-col space-y-2 text-sm">
-                <Link className="hover:underline" href="#">
+                <Link prefetch className="hover:underline" href="#">
                   Home
                 </Link>
-                <Link className="hover:underline" href="#">
+                <Link prefetch className="hover:underline" href="#">
                   FAQs
                 </Link>
-                <Link className="hover:underline" href="#">
+                <Link prefetch className="hover:underline" href="#">
                   Price Plan
                 </Link>
-                <Link className="hover:underline" href="#">
+                <Link prefetch className="hover:underline" href="#">
                   Features
                 </Link>
               </nav>
@@ -91,16 +91,16 @@ export default function ShopFooter() {
             <div className="space-y-4">
               <h3 className="text-lg font-bold invisible">Links</h3>
               <nav className="flex flex-col space-y-2 text-sm">
-                <Link className="hover:underline" href="#">
+                <Link prefetch className="hover:underline" href="#">
                   Careers
                 </Link>
-                <Link className="hover:underline" href="#">
+                <Link prefetch className="hover:underline" href="#">
                   About
                 </Link>
-                <Link className="hover:underline" href="#">
+                <Link prefetch className="hover:underline" href="#">
                   Contact
                 </Link>
-                <Link className="hover:underline" href="#">
+                <Link prefetch className="hover:underline" href="#">
                   Products
                 </Link>
               </nav>
