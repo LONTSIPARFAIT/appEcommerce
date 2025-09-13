@@ -283,7 +283,7 @@ export default function ShopBanner(): JSX.Element {
                         asChild
                         className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-2 h-12 text-base rounded-full transition-all duration-300 font-medium shadow-lg hover:shadow-xl flex items-center"
                       >
-                        <Link href={slide.buttonLink}>
+                        <Link prefetch href={slide.buttonLink}>
                           <ShoppingBag className="h-4 w-4 mr-2" />
                           {slide.buttonText}
                         </Link>
@@ -296,7 +296,7 @@ export default function ShopBanner(): JSX.Element {
                             variant="outline"
                             className="bg-white/50 border-gray-400 hover:bg-white/80 text-gray-800 px-6 py-2 h-12 text-base rounded-full transition-all duration-300 font-medium flex items-center"
                           >
-                            <Link href={slide.secondaryButtonLink}>
+                            <Link prefetch href={slide.secondaryButtonLink}>
                               {slide.secondaryButtonText}
                               <ArrowRight className="h-4 w-4 ml-2" />
                             </Link>

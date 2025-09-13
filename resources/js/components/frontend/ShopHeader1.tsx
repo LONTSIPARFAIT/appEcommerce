@@ -88,7 +88,7 @@ export default function ShopHeader() {
             </Button>
 
             {/* Logo */}
-            <Link
+            <Link prefetch
               href="/"
               className="flex items-center group"
               aria-label="TailGrids home"
@@ -137,7 +137,7 @@ export default function ShopHeader() {
 
             {/* Right icons */}
             <div className="flex items-center gap-5">
-              <Link
+              <Link prefetch
                 href="/account"
                 className="group relative flex items-center"
                 aria-label="My account"
@@ -156,7 +156,7 @@ export default function ShopHeader() {
                 </div>
               </Link>
 
-              <Link
+              <Link prefetch
                 href="/cart"
                 className="group flex items-center"
                 aria-label="Shopping cart"
@@ -202,7 +202,7 @@ export default function ShopHeader() {
             <div className="hidden md:flex items-center justify-between">
               <div className="flex items-center space-x-8">
                 {NAVIGATION_LINKS.map((link) => (
-                  <Link
+                  <Link prefetch
                     key={link.href}
                     href={link.href}
                     className="hover:text-gray-600 font-medium text-sm relative group transition-colors py-1"
@@ -294,7 +294,7 @@ export default function ShopHeader() {
 
               <div className="flex flex-col p-2">
                 {NAVIGATION_LINKS.map((link) => (
-                  <Link
+                  <Link prefetch
                     key={link.href}
                     href={link.href}
                     className="px-4 py-3 hover:bg-gray-50 rounded-md transition-colors font-medium"
@@ -307,7 +307,7 @@ export default function ShopHeader() {
 
               <div className="mt-auto p-4 border-t border-gray-200">
                 <div className="flex flex-col space-y-3">
-                  <Link
+                  <Link prefetch
                     href="/account"
                     className="flex items-center px-4 py-2 hover:bg-gray-50 rounded-md transition-colors"
                     onClick={() => setIsMenuOpen(false)}
@@ -315,7 +315,7 @@ export default function ShopHeader() {
                     <User className="h-5 w-5 mr-3" />
                     <span>My Account</span>
                   </Link>
-                  <Link
+                  <Link prefetch
                     href="/orders"
                     className="flex items-center px-4 py-2 hover:bg-gray-50 rounded-md transition-colors"
                     onClick={() => setIsMenuOpen(false)}
