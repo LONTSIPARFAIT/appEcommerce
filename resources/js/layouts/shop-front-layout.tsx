@@ -6,6 +6,7 @@ import React, { ReactNode } from 'react'
 
 export default function ShopFrontLayout({children}:{children:ReactNode}) {
   return (
+    // <GlobalLayout></GlobalLayout>
     <div>
         <ThemeProvider
             attribute="class"

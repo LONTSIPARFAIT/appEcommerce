@@ -4,6 +4,7 @@ import { home } from '@/routes';
 // import { type SharedData } from '@/types';
 import { Link, } from '@inertiajs/react';
 import { type PropsWithChildren } from 'react';
+import GlobalLayout from '../global-layout';
 
 interface AuthLayoutProps {
     title?: string;
