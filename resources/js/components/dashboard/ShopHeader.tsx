@@ -1,360 +1,451 @@
 "use client";
 import { Link } from "@inertiajs/react";
 import { useState, useEffect } from "react";
-import { cn } from "@/lib/utils";
-import { Search, ChevronDown, ShoppingCart, User, Menu, X } from "lucide-react";
+import { ShoppingBag, User, ChevronDown, Plus, Minus, X, Search, HelpCircle, } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetFooter, SheetClose } from "@/components/ui/sheet";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
 
-const NAVIGATION_LINKS = [
-  { href: "/mens", label: "Men's" },
-  { href: "/womens", label: "Women's" },
-  { href: "/accessories", label: "Accessories" },
-  { href: "/kids", label: "Kids" },
+// Sample cart items for demonstration
+const initialCartItems = [
+  {
+    id: 1,
+    name: "Premium Noise-Cancelling Headphones",
+    price: 299.99,
+    quantity: 1,
+    image: "/placeholder.svg?height=80&width=80",
+  },
+  {
+    id: 2,
+    name: "Smart Watch Ultra Series",
+    price: 429.99,
+    quantity: 1,
+    image: "/placeholder.svg?height=80&width=80",
+  },
 ];
 
-const CATEGORIES = [
-  "Electronics",
-  "Clothing",
-  "Home & Garden",
-  "Sports & Outdoor",
-  "Beauty & Health",
-  "Toys & Games",
-];
-
-export default function ShopHeader() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function NavBarOne() {
+  const [cartItems, setCartItems] = useState(initialCartItems);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [searchMobileOpen, setSearchMobileOpen] = useState(false);
 
-  // Cart and notification examples
-  const cartCount = 2;
-  const cartTotal = "$299.00";
-  const accountNotifications = 1;
-
+  // Track scroll position for styling changes
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 20);
     };
 
-    // Add scroll listener
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close search overlay when Escape key is pressed
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && searchMobileOpen) {
-        setSearchMobileOpen(false);
-      }
-    };
+  const updateQuantity = (id: number, increment: boolean) => {
+    setCartItems(
+      cartItems.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            quantity: increment
+              ? item.quantity + 1
+              : Math.max(1, item.quantity - 1),
+          };
+        }
+        return item;
+      })
+    );
+  };
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [searchMobileOpen]);
+  const removeItem = (id: number) => {
+    setCartItems(cartItems.filter((item) => item.id !== id));
+  };
+
+  const calculateTotal = () => {
+    return cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+  };
 
   return (
-    <header className=" w-full">
-      <nav
-        className={cn(
-          "flex flex-col w-full bg-black transition-all duration-300",
-          isScrolled && "shadow-md"
-        )}
-      >
-        {/* Main navigation bar */}
-        <div className="border-b border-gray-200">
-          <div
-            className={cn(
-              "container mx-auto flex items-center justify-between py-3 px-4 transition-all duration-300",
-              isScrolled && "py-2"
-            )}
-          >
-            {/* Mobile menu button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden text-black hover:bg-gray-100"
-              onClick={() => setIsMenuOpen(true)}
-              aria-label="Open menu"
-            >
-              <Menu className="h-5 w-5" />
-            </Button>
+    <header
+      className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
+        isScrolled ? "bg-white shadow-md" : "bg-white"
+      }`}
+    >
+      {/* Top announcements/offers bar */}
+      <div className="bg-orange-500 text-white py-2 text-center text-sm font-medium">
+        Free worldwide shipping on all orders over $100
+      </div>
 
-            {/* Logo */}
-            <Link
-              href="/"
-              className="flex items-center group"
-              aria-label="TailGrids home"
-            >
-              <div className="flex items-center justify-center bg-black rounded-full p-1 mr-2 h-8 w-8 transition-transform group-hover:scale-110">
-                <span className="text-white font-bold text-xl">SU</span>
+      <div className="container mx-auto">
+        <div className="flex h-20 items-center justify-between px-4 md:px-6">
+          {/* Logo Section */}
+          <div className="flex items-center">
+            <Link href="/" className="flex items-center">
+              <div className="relative h-8 w-40">
+                <div className="flex items-center">
+                  <span className="text-3xl font-bold tracking-tight">
+                    Simple UI
+                  </span>
+                  <div className="ml-1 flex h-5 w-5 items-center justify-center rounded-full bg-orange-500 text-white">
+                    <span className="text-xs font-bold">★</span>
+                  </div>
+                </div>
               </div>
-              <span className="text-xl font-bold">Simple UI</span>
             </Link>
-
-            {/* Desktop search bar */}
-            <div className="hidden md:flex flex-1 max-w-xl mx-6">
-              <div className="flex w-full rounded-md overflow-hidden border border-gray-300">
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      className="rounded-r-none h-10 px-4 bg-gray-50 text-gray-700 border-r border-gray-300 flex items-center hover:bg-gray-100"
-                    >
-                      All categories
-                      <ChevronDown className="ml-2 h-4 w-4" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="w-[200px]">
-                    {CATEGORIES.map((category) => (
-                      <DropdownMenuItem key={category}>
-                        {category}
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-                <div className="flex-1 relative">
-                  <Input
-                    placeholder="I'm shopping for..."
-                    className="rounded-none h-10 border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-                  />
-                  <Button
-                    className="absolute right-0 top-0 h-full rounded-l-none bg-black hover:bg-gray-800 transition-colors"
-                    aria-label="Search"
-                  >
-                    <Search className="h-4 w-4 text-white" />
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* Right icons */}
-            <div className="flex items-center gap-5">
-              <Link
-                href="/account"
-                className="group relative flex items-center"
-                aria-label="My account"
-              >
-                <div className="relative">
-                  <User className="h-5 w-5 transition-transform group-hover:scale-110" />
-                  {accountNotifications > 0 && (
-                    <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                      {accountNotifications}
-                    </span>
-                  )}
-                </div>
-                <div className="ml-2 hidden md:flex flex-col">
-                  <span className="text-xs">Login</span>
-                  <span className="text-xs font-medium">My Account</span>
-                </div>
-              </Link>
-
-              <Link
-                href="/cart"
-                className="group flex items-center"
-                aria-label="Shopping cart"
-              >
-                <div className="relative">
-                  <ShoppingCart className="h-5 w-5 transition-transform group-hover:scale-110" />
-                  {cartCount > 0 && (
-                    <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                      {cartCount}
-                    </span>
-                  )}
-                </div>
-                <span className="ml-2 hidden md:block text-xs font-medium">
-                  {cartTotal}
-                </span>
-              </Link>
-            </div>
           </div>
-        </div>
 
-        {/* Category links - desktop */}
-        <div
-          className={cn(
-            "bg-white border-b border-gray-200 transition-all duration-300 py-2 px-4",
-            isScrolled ? "md:hidden" : "block"
-          )}
-        >
-          <div className="container mx-auto">
-            {/* Mobile search bar */}
-            <div className="md:hidden w-full relative mb-1">
+          {/* Search bar - directly in the navbar */}
+          <div className="hidden md:flex flex-1 max-w-xl mx-8">
+            <div className="relative flex w-full items-center">
+              <Input
+                type="search"
+                placeholder="Search products, brands and categories"
+                className="h-10 w-full rounded-r-none border-r-0"
+              />
               <Button
-                variant="ghost"
-                size="sm"
-                className="text-gray-600 hover:text-black hover:bg-gray-100 flex justify-start w-full pl-3 pr-4 py-1.5 rounded-md"
-                onClick={() => setSearchMobileOpen(true)}
+                type="submit"
+                className="h-10 rounded-l-none bg-orange-500 hover:bg-orange-600"
               >
-                <Search className="h-4 w-4 mr-2" />
-                <span className="text-sm">Search products...</span>
+                Search
               </Button>
             </div>
-
-            {/* Desktop category navigation */}
-            <div className="hidden md:flex items-center justify-between">
-              <div className="flex items-center space-x-8">
-                {NAVIGATION_LINKS.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="hover:text-gray-600 font-medium text-sm relative group transition-colors py-1"
-                  >
-                    {link.label}
-                    <span className="absolute -bottom-[2px] left-0 w-0 h-[2px] bg-black transition-all duration-300 group-hover:w-full"></span>
-                  </Link>
-                ))}
-              </div>
-
-              <div className="text-sm">
-                <span className="text-gray-600">
-                  Free shipping on orders over $50
-                </span>
-              </div>
-            </div>
           </div>
-        </div>
-      </nav>
 
-      {/* Mobile search overlay */}
-      {searchMobileOpen && (
-        <div className="fixed inset-0 bg-black/30 z-50 animate-in fade-in-0 md:hidden">
-          <div className="fixed top-0 left-0 right-0 bg-white p-4 shadow-lg animate-in slide-in-from-top duration-300">
-            <div className="relative">
-              <Input
-                placeholder="Search products..."
-                className="pr-16 border-gray-300 focus:border-black"
-                autoFocus
-              />
-              <div className="absolute right-0 top-0 h-full flex items-center pr-2">
+          {/* Actions */}
+          <div className="flex items-center gap-1 md:gap-6">
+            {/* Account */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-8 w-8 mr-1 text-gray-500 hover:text-black hover:bg-gray-100"
-                  onClick={() => setSearchMobileOpen(false)}
-                  aria-label="Close search"
+                  className="hidden md:flex rounded-full"
                 >
-                  <X className="h-4 w-4" />
+                  <User className="h-5 w-5" />
+                  <span className="sr-only">Account</span>
                 </Button>
-                <Button
-                  className="h-8 w-8 bg-black hover:bg-gray-800 rounded-md"
-                  aria-label="Search"
-                >
-                  <Search className="h-4 w-4 text-white" />
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem>Orders</DropdownMenuItem>
+                <DropdownMenuItem>Wishlist</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Sign out</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
 
-      {/* Mobile menu drawer */}
-      {isMenuOpen && (
-        <>
-          <div
-            className="fixed inset-0 bg-black/50 z-50 animate-in fade-in md:hidden"
-            onClick={() => setIsMenuOpen(false)}
-          />
-          <div className="fixed inset-y-0 left-0 z-50 w-[280px] bg-white shadow-xl animate-in slide-in-from-left duration-300 md:hidden overflow-auto">
-            <div className="flex flex-col h-full">
-              <div className="p-4 border-b border-gray-200 flex justify-between items-center">
-                <div className="font-bold text-xl">Simple UI</div>
+            {/* Help */}
+            <Dialog>
+              <DialogTrigger asChild>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="text-black hover:bg-gray-100"
-                  onClick={() => setIsMenuOpen(false)}
-                  aria-label="Close menu"
+                  className="hidden md:flex rounded-full"
                 >
-                  <X className="h-5 w-5" />
+                  <HelpCircle className="h-5 w-5" />
+                  <span className="sr-only">Help</span>
                 </Button>
-              </div>
-
-              <div className="p-4 border-b border-gray-200">
-                <div className="relative">
-                  <Input
-                    placeholder="Search products..."
-                    className="pr-10 border-gray-300"
-                  />
-                  <Button
-                    className="absolute right-0 top-0 h-full rounded-l-none bg-black hover:bg-gray-800"
-                    aria-label="Search"
-                  >
-                    <Search className="h-4 w-4 text-white" />
-                  </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Customer Support</DialogTitle>
+                </DialogHeader>
+                <div className="grid gap-6 py-4">
+                  <div className="rounded-lg bg-slate-50 p-4">
+                    <h3 className="font-medium mb-2">Contact Us</h3>
+                    <p className="text-sm text-slate-600 mb-1">
+                      Email: support@luxeplus.com
+                    </p>
+                    <p className="text-sm text-slate-600 mb-1">
+                      Phone: +1 (800) 123-4567
+                    </p>
+                    <p className="text-sm text-slate-600">
+                      Hours: 24/7 Concierge Support
+                    </p>
+                  </div>
+                  <div className="grid gap-3">
+                    <h3 className="font-medium">Quick Links</h3>
+                    <div className="grid grid-cols-2 gap-2">
+                      <Link
+                        href="#"
+                        className="text-sm text-orange-500 hover:underline"
+                      >
+                        Shipping Information
+                      </Link>
+                      <Link
+                        href="#"
+                        className="text-sm text-orange-500 hover:underline"
+                      >
+                        Returns & Exchanges
+                      </Link>
+                      <Link
+                        href="#"
+                        className="text-sm text-orange-500 hover:underline"
+                      >
+                        Order Tracking
+                      </Link>
+                      <Link
+                        href="#"
+                        className="text-sm text-orange-500 hover:underline"
+                      >
+                        FAQ
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </DialogContent>
+            </Dialog>
 
-              <div className="flex flex-col p-2">
-                {NAVIGATION_LINKS.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="px-4 py-3 hover:bg-gray-50 rounded-md transition-colors font-medium"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
+            {/* Shopping Cart */}
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="rounded-full relative"
+                >
+                  <ShoppingBag className="h-5 w-5" />
+                  {cartItems.length > 0 && (
+                    <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-orange-500 text-xs font-medium text-white">
+                      {cartItems.reduce(
+                        (total, item) => total + item.quantity,
+                        0
+                      )}
+                    </span>
+                  )}
+                  <span className="sr-only">Shopping Cart</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent className="flex flex-col w-full sm:max-w-md">
+                <SheetHeader className="border-b pb-4">
+                  <SheetTitle className="text-xl">Your Shopping Bag</SheetTitle>
+                </SheetHeader>
+                <div className="flex-1 overflow-auto py-6">
+                  {cartItems.length === 0 ? (
+                    <div className="flex h-full flex-col items-center justify-center">
+                      <ShoppingBag className="h-16 w-16 text-slate-300" />
+                      <p className="mt-6 text-lg font-medium">
+                        Your shopping bag is empty
+                      </p>
+                      <p className="mt-2 text-sm text-slate-500 text-center max-w-xs">
+                        Looks like you haven't added anything to your bag yet.
+                      </p>
+                      <SheetClose asChild>
+                        <Button className="mt-8 bg-orange-500 hover:bg-orange-600">
+                          Continue Shopping
+                        </Button>
+                      </SheetClose>
+                    </div>
+                  ) : (
+                    <div className="grid gap-6">
+                      {cartItems.map((item) => (
+                        <div
+                          key={item.id}
+                          className="grid grid-cols-[80px_1fr] gap-4"
+                        >
+                          <div className="aspect-square overflow-hidden rounded-md bg-slate-50">
+                            <image
+                              src={item.image || "/placeholder.svg"}
+                              alt={item.name}
+                              width={80}
+                              height={80}
+                              className="h-full w-full object-cover"
+                            />
+                          </div>
+                          <div className="grid gap-1">
+                            <div className="flex items-start justify-between">
+                              <h3 className="font-medium leading-tight">
+                                {item.name}
+                              </h3>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-8 w-8 rounded-full"
+                                onClick={() => removeItem(item.id)}
+                              >
+                                <X className="h-4 w-4" />
+                                <span className="sr-only">Remove</span>
+                              </Button>
+                            </div>
+                            <p className="text-sm text-slate-500">
+                              ${item.price.toFixed(2)}
+                            </p>
+                            <div className="flex items-center gap-3 mt-2">
+                              <div className="flex items-center border rounded-full">
+                                <Button
+                                  variant="ghost"
+                                  size="icon"
+                                  className="h-8 w-8 rounded-full"
+                                  onClick={() => updateQuantity(item.id, false)}
+                                >
+                                  <Minus className="h-3 w-3" />
+                                  <span className="sr-only">
+                                    Decrease quantity
+                                  </span>
+                                </Button>
+                                <span className="w-8 text-center text-sm">
+                                  {item.quantity}
+                                </span>
+                                <Button
+                                  variant="ghost"
+                                  size="icon"
+                                  className="h-8 w-8 rounded-full"
+                                  onClick={() => updateQuantity(item.id, true)}
+                                >
+                                  <Plus className="h-3 w-3" />
+                                  <span className="sr-only">
+                                    Increase quantity
+                                  </span>
+                                </Button>
+                              </div>
+                              <div className="ml-auto font-medium">
+                                ${(item.price * item.quantity).toFixed(2)}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                {cartItems.length > 0 && (
+                  <SheetFooter className="border-t pt-6">
+                    <div className="w-full space-y-4">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-slate-500">Subtotal</span>
+                        <span className="font-medium">
+                          ${calculateTotal().toFixed(2)}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-slate-500">Shipping</span>
+                        <span className="font-medium">
+                          Calculated at checkout
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between border-t pt-4">
+                        <span className="text-base font-semibold">Total</span>
+                        <span className="text-base font-semibold">
+                          ${calculateTotal().toFixed(2)}
+                        </span>
+                      </div>
+                      <div className="grid gap-2">
+                        <Button className="w-full bg-orange-500 hover:bg-orange-600 py-6">
+                          Proceed to Checkout
+                        </Button>
+                        <SheetClose asChild>
+                          <Button variant="outline" className="w-full">
+                            Continue Shopping
+                          </Button>
+                        </SheetClose>
+                      </div>
+                      <p className="text-xs text-center text-slate-500 mt-4">
+                        Shipping & taxes calculated at checkout
+                      </p>
+                    </div>
+                  </SheetFooter>
+                )}
+              </SheetContent>
+            </Sheet>
 
-              <div className="mt-auto p-4 border-t border-gray-200">
-                <div className="flex flex-col space-y-3">
-                  <Link
-                    href="/account"
-                    className="flex items-center px-4 py-2 hover:bg-gray-50 rounded-md transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
+            {/* Mobile menu button */}
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="md:hidden">
+                  <svg
+                    width="18"
+                    height="11"
+                    viewBox="0 0 18 11"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <User className="h-5 w-5 mr-3" />
-                    <span>My Account</span>
-                  </Link>
-                  <Link
-                    href="/orders"
-                    className="flex items-center px-4 py-2 hover:bg-gray-50 rounded-md transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
+                    <path
+                      d="M0 0.5H18"
                       stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="mr-3"
+                      strokeWidth="1.5"
+                    />
+                    <path
+                      d="M0 5.5H18"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    />
+                    <path
+                      d="M0 10.5H18"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    />
+                  </svg>
+                  <span className="sr-only">Menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left">
+                <SheetHeader className="border-b pb-4">
+                  <SheetTitle>Menu</SheetTitle>
+                </SheetHeader>
+                <div className="py-6 space-y-4">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+                    <Input placeholder="Search" className="pl-9" />
+                  </div>
+                  <nav className="grid gap-2">
+                    <Link
+                      href="#"
+                      className="flex items-center justify-between py-2 text-base font-medium"
                     >
-                      <rect width="16" height="20" x="4" y="2" rx="2" />
-                      <path d="M9 22v-4h6v4" />
-                      <path d="M8 6h.01" />
-                      <path d="M16 6h.01" />
-                      <path d="M12 6h.01" />
-                      <path d="M12 10h.01" />
-                      <path d="M12 14h.01" />
-                      <path d="M16 10h.01" />
-                      <path d="M16 14h.01" />
-                      <path d="M8 10h.01" />
-                      <path d="M8 14h.01" />
-                    </svg>
-                    <span>My Orders</span>
-                  </Link>
+                      New Arrivals <ChevronDown className="h-4 w-4" />
+                    </Link>
+                    <Link
+                      href="#"
+                      className="flex items-center justify-between py-2 text-base font-medium"
+                    >
+                      Women <ChevronDown className="h-4 w-4" />
+                    </Link>
+                    <Link
+                      href="#"
+                      className="flex items-center justify-between py-2 text-base font-medium"
+                    >
+                      Men <ChevronDown className="h-4 w-4" />
+                    </Link>
+                    <Link
+                      href="#"
+                      className="flex items-center justify-between py-2 text-base font-medium"
+                    >
+                      Accessories <ChevronDown className="h-4 w-4" />
+                    </Link>
+                    <Link
+                      href="#"
+                      className="flex items-center justify-between py-2 text-base font-medium"
+                    >
+                      Collections <ChevronDown className="h-4 w-4" />
+                    </Link>
+                  </nav>
+                  <div className="border-t pt-4 mt-6">
+                    <nav className="grid gap-1">
+                      <Link href="#" className="text-sm py-2">
+                        Account
+                      </Link>
+                      <Link href="#" className="text-sm py-2">
+                        Wishlist
+                      </Link>
+                      <Link href="#" className="text-sm py-2">
+                        Order Tracking
+                      </Link>
+                      <Link href="#" className="text-sm py-2">
+                        Help & Contact
+                      </Link>
+                    </nav>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </SheetContent>
+            </Sheet>
           </div>
-        </>
-      )}
-
-      {/* Space to prevent content from being hidden under the navbar */}
-      <div className="h-[80px] sm:h-[80px] md:h-[130px]"></div>
+        </div>
+      </div>
     </header>
   );
 }
