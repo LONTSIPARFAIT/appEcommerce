@@ -1,13 +1,15 @@
 "use client";
 import { Link } from "@inertiajs/react";
 import { useState, useEffect } from "react";
-import { ShoppingBag, User, ChevronDown, Plus, Minus, X, Search, HelpCircle, } from "lucide-react";
+import { ShoppingBag, ChevronDown, Plus, Minus, X, Search, HelpCircle, } from "lucide-react";
+// import {  User } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetFooter, SheetClose } from "@/components/ui/sheet";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 // import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
+import { login,  } from '@/routes';
 import { ModeToggle } from "../mode-togle";
 
 // Sample cart items for demonstration
@@ -119,8 +121,8 @@ export default function ShopHeader() {
           <div className="flex items-center gap-1 md:gap-6">
             <ModeToggle />
 
-                <Link
-                    href={register()}
+                <Link prefetch
+                    href={login()}
                     className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
                   >
                     Login
