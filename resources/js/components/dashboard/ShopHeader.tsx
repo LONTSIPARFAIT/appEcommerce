@@ -119,12 +119,12 @@ export default function ShopHeader() {
           <div className="flex items-center gap-1 md:gap-6">
             <ModeToggle />
 
-                                            <Link
-                                                href={register()}
-                                                className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-                                            >
-                                                Register
-                                            </Link>
+                <Link
+                    href={register()}
+                    className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+                  >
+                    Login
+                </Link>
 
             {/* Account */}
             {/* <DropdownMenu>
