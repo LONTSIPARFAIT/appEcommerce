@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function shop-front-layout() {
+export default function ShopFrontLayout() {
   return (
     <div>
       
