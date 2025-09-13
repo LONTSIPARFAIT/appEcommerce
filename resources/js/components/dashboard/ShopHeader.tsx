@@ -27,7 +27,7 @@ const initialCartItems = [
   },
 ];
 
-export default function NavBarOne() {
+export default function ShopHeader() {
   const [cartItems, setCartItems] = useState(initialCartItems);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -75,9 +75,9 @@ export default function NavBarOne() {
       }`}
     >
       {/* Top announcements/offers bar */}
-      <div className="bg-orange-500 text-white py-2 text-center text-sm font-medium">
+      {/* <div className="bg-orange-500 text-white py-2 text-center text-sm font-medium">
         Free worldwide shipping on all orders over $100
-      </div>
+      </div> */}
 
       <div className="container mx-auto">
         <div className="flex h-20 items-center justify-between px-4 md:px-6">
