@@ -1,4 +1,3 @@
-"use client";
 import { Link } from "@inertiajs/react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";

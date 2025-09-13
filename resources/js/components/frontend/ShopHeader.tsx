@@ -1,4 +1,3 @@
-"use client";
 import { Link } from "@inertiajs/react";
 import { useState, useEffect } from "react";
 import { ShoppingBag, ChevronDown, Plus, Minus, X, Search, HelpCircle, } from "lucide-react";

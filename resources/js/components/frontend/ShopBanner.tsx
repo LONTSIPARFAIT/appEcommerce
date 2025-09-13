@@ -1,5 +1,3 @@
-"use client";
-
 import { Link } from "@inertiajs/react";
 import { useState, useEffect, useCallback, useRef, JSX } from "react";
 import { ChevronLeft, ChevronRight, ShoppingBag, ArrowRight, Star} from "lucide-react";
