@@ -99,6 +99,17 @@ export default function ShopBanner(): JSX.Element {
   const slideDuration = 8000; // 8 seconds per slide
   const animationDuration = 700; // 700ms for transitions
 
+  // Navigation functions
+  const goToSlide = useCallback(
+    (index: number): void => {
+      if (isAnimating) return;
+      setIsAnimating(true);
+      setCurrentSlide(index);
+      setTimeout(() => setIsAnimating(false), animationDuration);
+    },
+    [isAnimating]
+  );
+
   // Reset timer when slide changes
   useEffect(() => {
     setProgress(0);
@@ -127,6 +138,11 @@ export default function ShopBanner(): JSX.Element {
     };
   }, [currentSlide, isHovering, slideDuration]);
 
+  const goToNextSlide = useCallback((): void => {
+    const newIndex = (currentSlide + 1) % slideCount;   
+    goToSlide(newIndex);
+  }, [currentSlide, goToSlide, slideCount]);
+
   // Auto-advance the carousel
   useEffect(() => {
     if (autoPlayRef.current) {
@@ -144,28 +160,13 @@ export default function ShopBanner(): JSX.Element {
         clearTimeout(autoPlayRef.current);
       }
     };
-  }, [currentSlide, isAnimating, isHovering]);
-
-  // Navigation functions
-  const goToSlide = useCallback(
-    (index: number): void => {
-      if (isAnimating) return;
-      setIsAnimating(true);
-      setCurrentSlide(index);
-      setTimeout(() => setIsAnimating(false), animationDuration);
-    },
-    [isAnimating]
-  );
+  }, [currentSlide, goToNextSlide, isAnimating, isHovering]);
 
   const goToPrevSlide = useCallback((): void => {
     const newIndex = (currentSlide - 1 + slideCount) % slideCount;
     goToSlide(newIndex);
   }, [currentSlide, goToSlide, slideCount]);
 
-  const goToNextSlide = useCallback((): void => {
-    const newIndex = (currentSlide + 1) % slideCount;
-    goToSlide(newIndex);
-  }, [currentSlide, goToSlide, slideCount]);
 
   return (
     <section
