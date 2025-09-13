@@ -279,7 +279,7 @@ const ProductCard: React.FC<{
 };
 
 // Main Carousel Component
-const ProductTwo = () => {
+const ProductListing = () => {
   const [products, setProducts] = useState<Product[]>(sampleProducts);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleProducts, setVisibleProducts] = useState(4);
@@ -332,10 +332,10 @@ const ProductTwo = () => {
   };
 
   // Calculate displayed products
-  const displayedProducts = products.slice(
-    currentIndex,
-    Math.min(currentIndex + visibleProducts, products.length)
-  );
+//   const displayedProducts = products.slice(
+//     currentIndex,
+//     Math.min(currentIndex + visibleProducts, products.length)
+//   );
 
   // Auto scroll function
   useEffect(() => {
@@ -427,7 +427,7 @@ const ProductTwo = () => {
 
       {/* View all button */}
       <div className="flex justify-center mt-8">
-        <button className="px-6 py-2 border-2 border-gray-900 text-gray-900 font-medium rounded-lg hover:bg-gray-900 hover:text-white transition-colors duration-300">
+        <button className="px-6 cursor-pointer py-2 border-2 border-gray-900 text-gray-900 font-medium rounded-lg hover:bg-gray-900 hover:text-white transition-colors duration-300">
           View All Sales
         </button>
       </div>
@@ -435,4 +435,4 @@ const ProductTwo = () => {
   );
 };
 
-export default ProductTwo;
+export default ProductListing;

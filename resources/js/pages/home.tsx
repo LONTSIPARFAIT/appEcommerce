@@ -1,4 +1,5 @@
 import ShopCategories from '@/components/frontend/ShopCategories'
+import ProductListing from '@/components/frontend/ProductListing'
 import ShopBanner from '@/components/frontend/ShopBanner'
 import ShopFrontLayout from '@/layouts/shop-front-layout'
 
@@ -10,6 +11,7 @@ export default function home() {
                 <ShopBanner />
                 <div className="py-16">
                     <ShopCategories />  
+                    <ProductListing />  
                 </div>
             </div>
         </div>
