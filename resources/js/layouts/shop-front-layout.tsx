@@ -1,6 +1,6 @@
 
 import ShopFooter from '@/components/dashboard/ShopFooter'
-import ShopHeader from '@/components/dashboard/ShopHeader'
+import ShopHeader from '@/components/frontend/ShopHeader'
 import { ThemeProvider } from '@/components/theme-provider'
 import React, { ReactNode } from 'react'
 
