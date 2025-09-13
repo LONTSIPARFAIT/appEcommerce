@@ -38,7 +38,7 @@ export default function AuthBackground() {
                                 </div>
                                 <div>
                                     <div className="text-sm opacity-70">Email Support:</div>
-                                    <div>desishub.info@gmail.com</div>
+                                    <div>lontsiparfait12@gmail.com</div>
                                 </div>
                             </div>
 
@@ -55,7 +55,7 @@ export default function AuthBackground() {
                                 </div>
                                 <div>
                                     <div className="text-sm opacity-70">Phone Support:</div>
-                                    <div>+256 762 063 160</div>
+                                    <div>+237 79 32 45 17</div>
                                 </div>
                             </div>
                         </div>
