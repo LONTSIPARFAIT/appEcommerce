@@ -90,7 +90,7 @@ const carouselData: CarouselSlide[] = [
   },
 ];
 
-export default function BannerOne(): JSX.Element {
+export default function ShopBanner(): JSX.Element {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const [isHovering, setIsHovering] = useState<boolean>(false);
