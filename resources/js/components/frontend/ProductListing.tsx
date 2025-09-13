@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import {
   ChevronRight,
   ChevronLeft,
@@ -305,11 +305,9 @@ const ProductListing = () => {
   }, []);
 
   // Navigation functions
-  const goToNext = () => {
-    setCurrentIndex((prev) =>
-      prev + 1 >= products.length - visibleProducts + 1 ? 0 : prev + 1
-    );
-  };
+  const goToNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1 >= products.length - visibleProducts + 1 ? 0 : prev + 1));
+  }, [products.length, visibleProducts])
 
   const goToPrev = () => {
     setCurrentIndex((prev) =>
@@ -344,7 +342,7 @@ const ProductListing = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [currentIndex, products.length, visibleProducts]);
+  }, [currentIndex, goToNext, products.length, visibleProducts]);
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-8 bg-gradient-to-b from-gray-50 to-white">
