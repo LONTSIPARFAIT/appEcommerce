@@ -6,6 +6,8 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLab
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import AppLayout from "@/layouts/app-layout";
+import { Head } from "@inertiajs/react";
 
 // Dummy data
 const analyticsData = {
@@ -121,7 +123,9 @@ const formatCurrency = (value: number) => {
 
 const Dashboard = () => {
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
+      <AppLayout>  
+        <Head title="Dashboard" />
+        <div className="p-6 bg-gray-50 min-h-screen">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
         <p className="text-gray-500">
@@ -432,7 +436,8 @@ const Dashboard = () => {
         </Card>
       </div>
     </div>
+    </AppLayout>
   );
 };
 
-export default DashboardOne;
+export default Dashboard;
