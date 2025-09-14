@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Shop\HomeController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,7 +28,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('products');
     Route::get('/dashboard/categories', function () {
         return Inertia::render('dashboard/categories/index');
-    })->name('dashboard.categories');
+    })->name('dashboard.categories.index');
+    Route::post('/dashboard/categories', [CategoryController::class])->name('dashboard.categories');
 });
 
 require __DIR__.'/settings.php';

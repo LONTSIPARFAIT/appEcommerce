@@ -17,6 +17,6 @@ class CategoryController extends Controller
 
         dd($request->all());
 
-        return to_route('dashboard/categories/index');
+        return to_route('dashboard/categories');
     }
 }
