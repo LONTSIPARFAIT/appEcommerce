@@ -1,3 +1,4 @@
+import { ProductsDataTable } from '@/components/dashboard/ProductsDataTable';
 import AppLayout from '@/layouts/app-layout'
 import { BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/react'
@@ -15,7 +16,7 @@ export default function Products() {
     <AppLayout breadcrumbs={breadcrumbs}>
         <Head title='Product' />
         <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
-            <h2 className=''>This is the Dashboard Products Page</h2>
+            <ProductsDataTable />
         </div>
     </AppLayout>
   )
