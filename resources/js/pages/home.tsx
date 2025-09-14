@@ -2,8 +2,10 @@ import ShopCategories from '@/components/frontend/ShopCategories'
 import ProductListing from '@/components/frontend/ProductListing'
 import ShopBanner from '@/components/frontend/ShopBanner'
 import ShopFrontLayout from '@/layouts/shop-front-layout'
+import { CategoryItem } from '@/types/categories'
 
-export default function home({categories}:{}) {
+export default function home({categories}:{categories:CategoryItem[]}) {
+    console.log(categories);
   return (
     <ShopFrontLayout>
         <div className="min-h-screen">
