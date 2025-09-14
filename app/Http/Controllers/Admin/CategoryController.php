@@ -15,6 +15,9 @@ class CategoryController extends Controller
             'image' => 'required|nullable|max:2048',
         ]);
 
+        //slug
+        $slug = Str::slug($request->name);
+
         dd($request->all());
 
         return to_route('dashboard.categories.index');
