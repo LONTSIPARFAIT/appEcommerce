@@ -11,5 +11,12 @@ class Product extends Model
     protected $casts =[
         'in_stock'=>'boolean',
         'is_featured'=>'boolean',
+        'sizes'=>'array',
+        'features'=>'array',
+        'images'=>'array',
+        'colors'=>'array',
+        'original_price'=>'decimal:2',
+        'price'=>'decimal:2',
+        'rating'=>'decimal:1',
     ];
 }
