@@ -70,6 +70,8 @@ import * as XLSX from "xlsx";
 import { Link, useForm } from "@inertiajs/react";
 import { CreateCategoryItem } from "@/types/categories";
 import { CompactFileInput } from "../FormInputs/ImageUploadInputs";
+import { Textarea } from "../ui/textarea";
+import InputError from "../input-error";
 
 export type Product = {
   id: string;
@@ -360,12 +362,13 @@ export default function CategoriesDataTable() {
     slug: '',
     color: '',
     image: null,
-
+    description: '',
   }); 
 
   const submit:React.FormEventHandler = (e) => {
-    console.log(data)
     e.preventDefault();
+    data.image = images[0] ;
+    console.log(data)
     // post( register(), {
     //   onFinish: ()=>reset('password','password_confirm')
     // })
@@ -424,6 +427,11 @@ export default function CategoriesDataTable() {
                       }
                     />
                   </div>
+                  </div>
+                  <div className="grid w-full gap-3">
+                    <Label htmlFor="message">Description</Label>
+                    <Textarea value={data.description} onChange={(e)=>setData('description', e.target.value)} placeholder="Type your message here." id="message" />
+                      <InputError message={errors.description} className="mt-2" />
                   </div>
                   <div className="mb-8">
                           <h2 className="text-lg font-semibold mb-3">Upload Category Image</h2>
