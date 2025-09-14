@@ -13,7 +13,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 import { Card, CardContent, CardFooter, CardHeader} from "@/components/ui/card";
-// import * as XLSX from "xlsx";
+import * as XLSX from "xlsx";
 import { Link } from "@inertiajs/react";
 
 export type Product = {
@@ -284,28 +284,28 @@ export default function ProductsDataTable() {
 
   const handleExportToExcel = () => {
     // Get visible and filtered data
-    // const exportData = table.getFilteredRowModel().rows.map((row) => {
-    //   const rowData = row.original;
-    //   return {
-    //     ID: rowData.id,
-    //     Name: rowData.name,
-    //     Category: rowData.category,
-    //     Status: rowData.status,
-    //     Stock: rowData.stock,
-    //     "Sales Count": rowData.salesCount,
-    //     Price: `$${rowData.price.toFixed(2)}`,
-    //   };
-    // });
+    const exportData = table.getFilteredRowModel().rows.map((row) => {
+      const rowData = row.original;
+      return {
+        ID: rowData.id,
+        Name: rowData.name,
+        Category: rowData.category,
+        Status: rowData.status,
+        Stock: rowData.stock,
+        "Sales Count": rowData.salesCount,
+        Price: `$${rowData.price.toFixed(2)}`,
+      };
+    });
 
     // Create worksheet
-    // const worksheet = XLSX.utils.json_to_sheet(exportData);
+    const worksheet = XLSX.utils.json_to_sheet(exportData);
 
     // Create workbook
-    // const workbook = XLSX.utils.book_new();
-    // XLSX.utils.book_append_sheet(workbook, worksheet, "Products");
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Products");
 
     // Generate Excel file and trigger download
-    // XLSX.writeFile(workbook, "products.xlsx");
+    XLSX.writeFile(workbook, "products.xlsx");
   };
 
   const handleAddProduct = () => {
