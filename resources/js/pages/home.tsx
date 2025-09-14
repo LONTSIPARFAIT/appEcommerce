@@ -3,7 +3,7 @@ import ProductListing from '@/components/frontend/ProductListing'
 import ShopBanner from '@/components/frontend/ShopBanner'
 import ShopFrontLayout from '@/layouts/shop-front-layout'
 
-export default function home() {
+export default function home({categories}:{}) {
   return (
     <ShopFrontLayout>
         <div className="min-h-screen">

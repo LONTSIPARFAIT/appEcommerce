@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "@inertiajs/react";
 
-interface CategoryItem {
+export interface CategoryItem {
   id: number;
   name: string;
   slug: string;
