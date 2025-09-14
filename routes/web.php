@@ -27,7 +27,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('products');
     Route::get('/dashboard/categories', function () {
         return Inertia::render('dashboard/categories/index');
-    })->name('categories');
+    })->name('dashboard.categories');
 });
 
 require __DIR__.'/settings.php';

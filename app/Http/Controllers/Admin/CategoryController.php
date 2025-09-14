@@ -7,10 +7,16 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function save_categorie(Request $request){
+    public function save_category(Request $request){
         $request->validate([
-            'name' => 'required|max:255',
+            'name' => 'string|required|max:255',
+            'color' => 'string|required',
+            'description' => 'string|nullable',
             'image' => 'required|nullable|max:2048',
         ]);
+
+        dd($request->all());
+
+        return to_route('dashboard/categories/index');
     }
 }
