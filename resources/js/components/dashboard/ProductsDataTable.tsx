@@ -1,20 +1,73 @@
 "use client";
 
 import * as React from "react";
-import { type ColumnDef, type ColumnFiltersState, type SortingState, type VisibilityState, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable} from "@tanstack/react-table";
-import { ArrowUpDown, FileDown, Pencil, Plus, RefreshCw, Search, Trash} from "lucide-react";
+import {
+  type ColumnDef,
+  type ColumnFiltersState,
+  type SortingState,
+  type VisibilityState,
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
+import {
+  ArrowUpDown,
+  FileDown,
+  Pencil,
+  Plus,
+  RefreshCw,
+  Search,
+  Trash,
+} from "lucide-react";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from "@/components/ui/table";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle} from "@/components/ui/alert-dialog";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
-import { Card, CardContent, CardFooter, CardHeader} from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
 import * as XLSX from "xlsx";
-import { Link } from "@inertiajs/react";
 
 export type Product = {
   id: string;
@@ -96,7 +149,7 @@ export const columns: ColumnDef<Product>[] = [
     header: "Image",
     cell: ({ row }) => (
       <div className="flex items-center justify-center">
-        <img
+        <Image
           src={row.getValue("image") || "/placeholder.svg"}
           alt={row.getValue("name")}
           width={40}
@@ -183,31 +236,22 @@ export const columns: ColumnDef<Product>[] = [
   {
     accessorKey: "category",
     header: "Suppliers",
-    cell: ({ row }) => {
-        const id = row.original.id
-        return (
-            <Button asChild variant="outline" size="sm">
-                <Link prefetch href={`/${id}`} >
-                    View Suppliers
-                </Link>
-            </Button>
-        );
-    }
+    cell: ({ row }) => (
+      <Button variant="outline" size="sm">
+        View Suppliers
+      </Button>
+    ),
   },
   {
     id: "actions",
     header: "Actions",
     enableHiding: false,
     cell: ({ row }) => {
-        const id = row.original.id
       return (
         <div className="flex items-center gap-2">
-          <Button asChild variant="ghost" size="icon" className="h-8 w-8">
+          <Button variant="ghost" size="icon" className="h-8 w-8">
             <Pencil className="h-4 w-4" />
-            <Link prefetch href={`/${id}`} >
-                <span className="sr-only">Edit</span>
-            </Link>
-            
+            <span className="sr-only">Edit</span>
           </Button>
           <Button
             variant="ghost"
@@ -223,7 +267,7 @@ export const columns: ColumnDef<Product>[] = [
   },
 ];
 
-export default function ProductsDataTable() {
+export default function DashboardTwo() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
