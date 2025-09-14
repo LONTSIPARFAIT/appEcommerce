@@ -123,7 +123,7 @@ const formatCurrency = (value: number) => {
 
 const Dashboard = () => {
   return (
-      <AppLayout>  
+      <AppLayout breadcrumbs={breadcrumbs}>  
         <Head title="Dashboard" />
         <div className="p-6 bg-gray-50 min-h-screen">
       <div className="mb-8">
