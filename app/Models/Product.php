@@ -28,6 +28,6 @@ class Product extends Model
         $product = static::firstOrFail($productId);
         //Categoryid
         return $query->where('category_id', $product->category_id)
-        ->where('id','!=',productId);
+        ->where('id','!=',$productId);
     }
 }
