@@ -7,7 +7,7 @@ import React from 'react'
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Categories',
-        href: dashboard().url,
+        href: '/dashboard/products',
     },
 ];
 
