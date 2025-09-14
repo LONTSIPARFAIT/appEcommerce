@@ -8,6 +8,15 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import AppLayout from "@/layouts/app-layout";
 import { Head } from "@inertiajs/react";
+import { BreadcrumbItem } from "@/types";
+import { dashboard } from "@/routes";
+
+const breadcrumbs: BreadcrumbItem[] = [
+    {
+        title: 'Dashboard',
+        href: dashboard().url,
+    },
+];
 
 // Dummy data
 const analyticsData = {
