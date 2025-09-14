@@ -24,7 +24,8 @@ return new class extends Migration
             $table->json('features')->nullable();
             $table->json('image')->nullable();
             $table->json('colors')->nullable();
-            $table->json('colors')->nullable();
+            $table->json('sizes')->nullable();
+            $table->boolean('is_featured')->default(false);
             $table->timestamps();
         });
     }
