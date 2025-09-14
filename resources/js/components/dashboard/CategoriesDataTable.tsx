@@ -274,7 +274,7 @@ export const columns: ColumnDef<Product>[] = [
   },
 ];
 
-export default function DashboardDataTable() {
+export default function CategoriesDataTable() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
