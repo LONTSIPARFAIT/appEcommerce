@@ -7,9 +7,8 @@ export interface CategoryItem {
 }
 
 export interface CreateCategoryItem {
-  id: number;
   name: string;
   slug: string;
-  image: string;
+  image: File;
   color: string;
 }
