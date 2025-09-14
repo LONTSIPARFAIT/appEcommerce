@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "@inertiajs/react";
+import { CategoryItem } from "@/types/categories";
 
 
 
