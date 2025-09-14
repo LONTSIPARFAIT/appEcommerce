@@ -376,15 +376,7 @@ export default function CategoriesDataTable() {
     setShowAddDialog(false);
   };
 
-  // Calculate total value of all products
-  const totalValue = data.reduce(
-    (sum, product) => sum + product.price * product.stock,
-    0
-  );
-  const formattedTotalValue = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  }).format(totalValue);
+
 
   return (
     <Card className="w-full">
@@ -392,10 +384,10 @@ export default function CategoriesDataTable() {
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">
-              Products
+              Category
             </h2>
             <p className="text-sm text-muted-foreground">
-              {data.length} items | Total Value: USD {formattedTotalValue}
+              Gerer les Categories du la boutique
             </p>
           </div>
           <div className="flex items-center gap-2">
