@@ -22,10 +22,12 @@ return new class extends Migration
             $table->integer('reviewCount')->default(50);
             $table->text('description')->nullable();
             $table->json('features')->nullable();
-            $table->json('image')->nullable();
+            $table->string('image')->nullable();
+            $table->json('images')->nullable();
             $table->json('colors')->nullable();
             $table->json('sizes')->nullable();
             $table->boolean('is_featured')->default(false);
+            $table->boolean('in_stock')->default(true);
             $table->timestamps();
         });
     }
