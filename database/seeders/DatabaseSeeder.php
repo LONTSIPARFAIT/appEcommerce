@@ -43,11 +43,11 @@ class DatabaseSeeder extends Seeder
             ],
     
             [ 
-                name: "Men's Fashion",
-                slug: "mens-fashion",
-      image:
-        "https://images.unsplash.com/photo-1516257984-b1b4d707412e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-      color: "bg-blue-50",]
+                'name' => "Men's Fashion",
+                'slug' => "mens-fashion",
+                'image' => "https://images.unsplash.com/photo-1516257984-b1b4d707412e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                'color'=> "bg-blue-50",
+            ]
     
         ];
     }
