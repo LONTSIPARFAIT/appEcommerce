@@ -26,7 +26,8 @@ class Product extends Model
 
     public function ScopeSimilar($query, $productId){
         $product = static::firstOrFail($productId);
-        //Categorieid
-        return $query->where('category_id');
+        //Categoryid
+        return $query->where('category_id', $product->category_id)
+        ->where('id','!=',productId);
     }
 }
