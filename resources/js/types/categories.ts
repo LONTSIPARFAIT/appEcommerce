@@ -9,6 +9,6 @@ export interface CategoryItem {
 export interface CreateCategoryItem {
   name: string;
   slug: string;
-  image: File;
+  image: File|null;
   color: string;
 }

@@ -67,7 +67,8 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import * as XLSX from "xlsx";
-import { Link } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
+import { CreateCategoryItem } from "@/types/categories";
 
 export type Product = {
   id: string;
@@ -80,7 +81,7 @@ export type Product = {
   status: "in-stock" | "out-stock";
 };
 
-const data: Product[] = [
+const categories: Product[] = [
   {
     id: "prod-001",
     name: "Wireless Headphones",
@@ -285,18 +286,10 @@ export default function CategoriesDataTable() {
   const [showDeleteDialog, setShowDeleteDialog] = React.useState(false);
   const [showAddDialog, setShowAddDialog] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [newProduct, setNewProduct] = React.useState<Partial<Product>>({
-    name: "",
-    category: "",
-    price: 0,
-    stock: 0,
-    status: "in-stock",
-    salesCount: 0,
-    image: "/placeholder.svg?height=40&width=40",
-  });
+
 
   const table = useReactTable({
-    data,
+    data:categories,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -359,22 +352,21 @@ export default function CategoriesDataTable() {
     XLSX.writeFile(workbook, "products.xlsx");
   };
 
-  const handleAddProduct = () => {
-    // In a real application, you would add the product to your database
-    console.log("Adding new product:", newProduct);
+  const { data, setData, post, processsing, errors, reset } = useForm<Required<CreateCategoryItem>>({
+    name: '',
+    slug: '',
+    color: '',
+    image: null,
 
-    // Reset form and close dialog
-    setNewProduct({
-      name: "",
-      category: "",
-      price: 0,
-      stock: 0,
-      status: "in-stock",
-      salesCount: 0,
-      image: "/placeholder.svg?height=40&width=40",
-    });
-    setShowAddDialog(false);
-  };
+  }); 
+
+  const submit:React.FormEventHandler = (e) => {
+    console.log(data)
+    e.preventDefault();
+    // post( register(), {
+    //   onFinish: ()=>reset('password','password_confirm')
+    // })
+  }
 
 
 
@@ -402,113 +394,33 @@ export default function CategoriesDataTable() {
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[750px]">
-                <DialogHeader>
-                  <DialogTitle>Add New Product</DialogTitle>
+                <form action="" onSubmit={submit}>
+                  <DialogHeader>
+                  <DialogTitle>Add New Category</DialogTitle>
                   <DialogDescription>
-                    Fill in the details to add a new product to your products.
+                    Fill in the details to add a new category to your products.
                   </DialogDescription>
                 </DialogHeader>
                 <div className="grid grid-cols-2 gap-6 py-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Product Name</Label>
+                    <Label htmlFor="name">Category Name</Label>
                     <Input
                       id="name"
-                      value={newProduct.name}
-                      onChange={(e) =>
-                        setNewProduct({ ...newProduct, name: e.target.value })
-                      }
+                      value={data.name}
+                      onChange={(e) => setData('name', e.target.value)}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="category">Category</Label>
+                    <Label htmlFor="category">Category Tailwind Color Class eg:bg-red-100</Label>
                     <Input
                       id="category"
-                      value={newProduct.category}
+                      value={data.color}
                       onChange={(e) =>
-                        setNewProduct({
-                          ...newProduct,
-                          category: e.target.value,
-                        })
+                        setData('color', e.target.value)
                       }
                     />
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="price">Price</Label>
-                    <Input
-                      id="price"
-                      type="number"
-                      value={newProduct.price}
-                      onChange={(e) =>
-                        setNewProduct({
-                          ...newProduct,
-                          price: Number.parseFloat(e.target.value),
-                        })
-                      }
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="stock">Stock</Label>
-                    <Input
-                      id="stock"
-                      type="number"
-                      value={newProduct.stock}
-                      onChange={(e) =>
-                        setNewProduct({
-                          ...newProduct,
-                          stock: Number.parseInt(e.target.value),
-                        })
-                      }
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="salesCount">Sales Count</Label>
-                    <Input
-                      id="salesCount"
-                      type="number"
-                      value={newProduct.salesCount}
-                      onChange={(e) =>
-                        setNewProduct({
-                          ...newProduct,
-                          salesCount: Number.parseInt(e.target.value),
-                        })
-                      }
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="status">Status</Label>
-                    <Select
-                      value={newProduct.status}
-                      onValueChange={(value) =>
-                        setNewProduct({
-                          ...newProduct,
-                          status: value as "in-stock" | "out-stock",
-                        })
-                      }
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select status" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="in-stock">In Stock</SelectItem>
-                        <SelectItem value="out-stock">Out of Stock</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="supplier">Supplier</Label>
-                    <Input id="supplier" placeholder="Enter supplier name" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="image">Image URL</Label>
-                    <Input
-                      id="image"
-                      value={newProduct.image}
-                      onChange={(e) =>
-                        setNewProduct({ ...newProduct, image: e.target.value })
-                      }
-                      placeholder="Enter image URL"
-                    />
-                  </div>
+                  
                 </div>
                 <DialogFooter>
                   <Button
@@ -517,10 +429,11 @@ export default function CategoriesDataTable() {
                   >
                     Cancel
                   </Button>
-                  <Button type="submit" onClick={handleAddProduct}>
-                    Add Product
+                  <Button type="submit">
+                    Add Category
                   </Button>
                 </DialogFooter>
+                </form>
               </DialogContent>
             </Dialog>
           </div>
