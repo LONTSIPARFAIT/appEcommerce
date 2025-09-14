@@ -11,7 +11,7 @@ export default function AuthBackground() {
             {/* Logo and Content Container */}
             <div className="relative z-10 flex h-full flex-col p-8">
                 <div className="mb-6">
-                    <Link className="text-sm font-bold text-white uppercase" href="/">
+                    <Link pre className="text-sm font-bold text-white uppercase" href="/">
                         ECommerce APP
                     </Link>
                 </div>
