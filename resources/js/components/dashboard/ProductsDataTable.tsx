@@ -13,7 +13,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 import { Card, CardContent, CardFooter, CardHeader} from "@/components/ui/card";
-import * as XLSX from "xlsx";
+// import * as XLSX from "xlsx";
 import { Link } from "@inertiajs/react";
 
 export type Product = {
@@ -186,7 +186,7 @@ export const columns: ColumnDef<Product>[] = [
     cell: ({ row }) => {
         const id = row.original.id
         return (
-            <Button variant="outline" size="sm">
+            <Button asChild variant="outline" size="sm">
                 <Link prefetch href={`/${id}`} >
                     View Suppliers
                 </Link>
@@ -199,11 +199,15 @@ export const columns: ColumnDef<Product>[] = [
     header: "Actions",
     enableHiding: false,
     cell: ({ row }) => {
+        const id = row.original.id
       return (
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" className="h-8 w-8">
+          <Button asChild variant="ghost" size="icon" className="h-8 w-8">
             <Pencil className="h-4 w-4" />
-            <span className="sr-only">Edit</span>
+            <Link prefetch href={`/${id}`} >
+                <span className="sr-only">Edit</span>
+            </Link>
+            
           </Button>
           <Button
             variant="ghost"
@@ -280,28 +284,28 @@ export default function ProductsDataTable() {
 
   const handleExportToExcel = () => {
     // Get visible and filtered data
-    const exportData = table.getFilteredRowModel().rows.map((row) => {
-      const rowData = row.original;
-      return {
-        ID: rowData.id,
-        Name: rowData.name,
-        Category: rowData.category,
-        Status: rowData.status,
-        Stock: rowData.stock,
-        "Sales Count": rowData.salesCount,
-        Price: `$${rowData.price.toFixed(2)}`,
-      };
-    });
+    // const exportData = table.getFilteredRowModel().rows.map((row) => {
+    //   const rowData = row.original;
+    //   return {
+    //     ID: rowData.id,
+    //     Name: rowData.name,
+    //     Category: rowData.category,
+    //     Status: rowData.status,
+    //     Stock: rowData.stock,
+    //     "Sales Count": rowData.salesCount,
+    //     Price: `$${rowData.price.toFixed(2)}`,
+    //   };
+    // });
 
     // Create worksheet
-    const worksheet = XLSX.utils.json_to_sheet(exportData);
+    // const worksheet = XLSX.utils.json_to_sheet(exportData);
 
     // Create workbook
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Products");
+    // const workbook = XLSX.utils.book_new();
+    // XLSX.utils.book_append_sheet(workbook, worksheet, "Products");
 
     // Generate Excel file and trigger download
-    XLSX.writeFile(workbook, "products.xlsx");
+    // XLSX.writeFile(workbook, "products.xlsx");
   };
 
   const handleAddProduct = () => {
