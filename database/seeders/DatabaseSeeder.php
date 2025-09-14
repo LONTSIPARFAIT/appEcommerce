@@ -48,7 +48,23 @@ class DatabaseSeeder extends Seeder
                 'slug' => "mens-fashion",
                 'image' => "https://images.unsplash.com/photo-1516257984-b1b4d707412e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
                 'color' => "bg-blue-50",
+            ],
+
+            [
+                'name'=> "Sports & Outdoors",
+                'slug'=> "sports-outdoors",
+                'image'=> "https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                'color'=> "bg-purple-50",
+            ],
+    
+    
+            [
+                'name'=> "Women's Fashion",
+                'slug'=> "womens-fashion",
+                'image'=> "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                'color'=> "bg-indigo-50",
             ]
+    
 
         ];
 
