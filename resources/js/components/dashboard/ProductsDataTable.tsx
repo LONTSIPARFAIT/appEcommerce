@@ -22,7 +22,6 @@ import {
   Search,
   Trash,
 } from "lucide-react";
-import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -68,6 +67,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import * as XLSX from "xlsx";
+import { Link } from "@inertiajs/react";
 
 export type Product = {
   id: string;
@@ -149,7 +149,7 @@ export const columns: ColumnDef<Product>[] = [
     header: "Image",
     cell: ({ row }) => (
       <div className="flex items-center justify-center">
-        <Image
+        <img
           src={row.getValue("image") || "/placeholder.svg"}
           alt={row.getValue("name")}
           width={40}
@@ -236,22 +236,29 @@ export const columns: ColumnDef<Product>[] = [
   {
     accessorKey: "category",
     header: "Suppliers",
-    cell: ({ row }) => (
-      <Button variant="outline" size="sm">
-        View Suppliers
-      </Button>
-    ),
+    cell: ({ row }) => {
+        const id = row.original.id
+        return (
+            <Button variant="outline" size="sm">
+                <Link href={`${id}`} >View Suppliers</Link>
+            </Button>
+    );
+    }
   },
   {
     id: "actions",
     header: "Actions",
     enableHiding: false,
     cell: ({ row }) => {
+        const id = row.original.id
       return (
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon" className="h-8 w-8">
             <Pencil className="h-4 w-4" />
-            <span className="sr-only">Edit</span>
+            <Link href={`${id}`} >
+                <span className="sr-only">Edit</span>
+            </Link>
+
           </Button>
           <Button
             variant="ghost"
@@ -385,7 +392,7 @@ export default function DashboardTwo() {
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">
-              Inventory Items
+              Products
             </h2>
             <p className="text-sm text-muted-foreground">
               {data.length} items | Total Value: USD {formattedTotalValue}
@@ -406,7 +413,7 @@ export default function DashboardTwo() {
                 <DialogHeader>
                   <DialogTitle>Add New Product</DialogTitle>
                   <DialogDescription>
-                    Fill in the details to add a new product to your inventory.
+                    Fill in the details to add a new product to your products.
                   </DialogDescription>
                 </DialogHeader>
                 <div className="grid grid-cols-2 gap-6 py-4">
