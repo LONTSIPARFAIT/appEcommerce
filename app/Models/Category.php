@@ -13,5 +13,5 @@ class Category extends Model
         'description',
     ];
 
-    protected $guard=['id', 'timestamps'] ;
+    // protected $guard=['id', 'timestamps'] ;
 }

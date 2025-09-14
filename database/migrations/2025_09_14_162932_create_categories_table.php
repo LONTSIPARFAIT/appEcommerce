@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->string('color')->default('bg-amber-50');
             $table->string('image')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
