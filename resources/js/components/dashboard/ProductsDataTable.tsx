@@ -95,7 +95,7 @@ export const columns: ColumnDef<Product>[] = [
     header: "Image",
     cell: ({ row }) => (
       <div className="flex items-center justify-center">
-        <Image
+        <image
           src={row.getValue("image") || "/placeholder.svg"}
           alt={row.getValue("name")}
           width={40}
