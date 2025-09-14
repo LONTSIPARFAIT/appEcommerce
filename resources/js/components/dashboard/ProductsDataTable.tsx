@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 import { Card, CardContent, CardFooter, CardHeader} from "@/components/ui/card";
 import * as XLSX from "xlsx";
+import { Link } from "@inertiajs/react";
 
 export type Product = {
   id: string;
@@ -182,11 +183,16 @@ export const columns: ColumnDef<Product>[] = [
   {
     accessorKey: "category",
     header: "Suppliers",
-    cell: ({ row }) => (
-      <Button variant="outline" size="sm">
-        View Suppliers
-      </Button>
-    ),
+    cell: ({ row }) => {
+        const id = row.original.id
+        return (
+            <Button variant="outline" size="sm">
+                <Link prefetch href={`/${id}`} >
+                    View Suppliers
+                </Link>
+            </Button>
+        );
+    }
   },
   {
     id: "actions",
