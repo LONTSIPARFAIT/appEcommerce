@@ -26,8 +26,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/products', function () {
         return Inertia::render('dashboard/products/index');
     });
-    Route::get('/dashboard/products', function () {
-        return Inertia::render('dashboard/products/index');
+    Route::get('/dashboard/categories', function () {
+        return Inertia::render('dashboard/categories/index');
     });
 });
 
