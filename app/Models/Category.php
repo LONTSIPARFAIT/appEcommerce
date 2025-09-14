@@ -11,6 +11,7 @@ class Category extends Model
         'slug',
         'image',
         'description',
+        'color',
     ];
 
     // protected $guard=['id', 'timestamps'] ;
