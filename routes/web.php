@@ -16,19 +16,19 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
+    // Route::get('dashboard', function () {
+    //     return Inertia::render('dashboard');
+    // })->name('dashboard');
 
     Route::get('dashboard', function () {
         return Inertia::render('dashboard/index');
-    });
+    })->name('dashboard');
     Route::get('/dashboard/products', function () {
         return Inertia::render('dashboard/products/index');
-    });
+    })->name('products');
     Route::get('/dashboard/categories', function () {
         return Inertia::render('dashboard/categories/index');
-    });
+    })->name('categories');
 });
 
 require __DIR__.'/settings.php';
