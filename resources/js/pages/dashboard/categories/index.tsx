@@ -1,3 +1,4 @@
+import CategoriesDataTable from '@/components/dashboard/CategoriesDataTable';
 import AppLayout from '@/layouts/app-layout'
 import { BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/react'
@@ -15,7 +16,7 @@ export default function Categories() {
     <AppLayout breadcrumbs={breadcrumbs}>
         <Head title='Categories' />
         <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
-            <h2 className=''>This is the Dashboard Categories Page</h2>
+            <CategoriesDataTable />
         </div>
     </AppLayout>
   )
