@@ -27,6 +27,28 @@ class DatabaseSeeder extends Seeder
                 'image' => "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
                 'color' => "bg-amber-50",
             ],
+            
+            [  
+                'name' => "Electronics",
+                'slug' => "electronics",
+                'image' => "https://images.unsplash.com/photo-166202691159-5558e9949346?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                'color' => "bg-gray-100",
+            ],
+    
+            [ 
+                'name' => "Health & Personal",
+                'slug' => "health-personal",
+                'image' => "https://images.unsplash.com/photo-1583209814683-c023dd293cc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                'color' => "bg-sky-50",
+            ],
+    
+            [ 
+                name: "Men's Fashion",
+                slug: "mens-fashion",
+      image:
+        "https://images.unsplash.com/photo-1516257984-b1b4d707412e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+      color: "bg-blue-50",]
+    
         ];
     }
 }
