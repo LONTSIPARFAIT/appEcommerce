@@ -67,7 +67,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import * as XLSX from "xlsx";
-import { Link, useForm } from "@inertiajs/react";
+import { Link, router, useForm } from "@inertiajs/react";
 import { CreateCategoryItem } from "@/types/categories";
 import { CompactFileInput } from "../FormInputs/ImageUploadInputs";
 import { Textarea } from "../ui/textarea";
@@ -368,10 +368,13 @@ export default function CategoriesDataTable() {
   const submit:React.FormEventHandler = (e) => {
     e.preventDefault();
     data.image = images[0] ;
-    console.log(data)
-    // post( register(), {
-    //   onFinish: ()=>reset('password','password_confirm')
-    // })
+    console.log(data);
+    router.post('/',data,{
+      onFinish: () => {
+        reset()
+        toast.success("Categorie creer avec success")
+      }
+    });
   }
 
 
@@ -416,6 +419,7 @@ export default function CategoriesDataTable() {
                       value={data.name}
                       onChange={(e) => setData('name', e.target.value)}
                     />
+                    <InputError message={errors.name} className="mt-2" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="category">Category Tailwind Color Class eg:bg-red-100</Label>
@@ -426,6 +430,7 @@ export default function CategoriesDataTable() {
                         setData('color', e.target.value)
                       }
                     />
+                    <InputError message={errors.color} className="mt-2" />
                   </div>
                   </div>
                   <div className="grid w-full gap-3">
