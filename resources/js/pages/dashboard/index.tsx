@@ -119,7 +119,7 @@ const formatCurrency = (value: number) => {
   }).format(value);
 };
 
-const DashboardOne = () => {
+const Dashboard = () => {
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
       <div className="mb-8">
