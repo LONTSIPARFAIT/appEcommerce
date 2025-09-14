@@ -16,12 +16,12 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Products',
-        href: 'dashboard/products',
+        href: '/dashboard/products',
         icon: LayoutGrid,
     },
     {
         title: 'Categories',
-        href: 'dashboard/categories',
+        href: '/dashboard/categories',
         icon: LayoutGrid,
     },
 ];
