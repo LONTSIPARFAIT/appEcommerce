@@ -69,6 +69,7 @@ import {
 import * as XLSX from "xlsx";
 import { Link, useForm } from "@inertiajs/react";
 import { CreateCategoryItem } from "@/types/categories";
+import { CompactFileInput } from "../FormInputs/ImageUploadInputs";
 
 export type Product = {
   id: string;
@@ -352,6 +353,8 @@ export default function CategoriesDataTable() {
     XLSX.writeFile(workbook, "products.xlsx");
   };
 
+  const [images, setImages] = React.useState<File[]>([]);
+
   const { data, setData, post, processsing, errors, reset } = useForm<Required<CreateCategoryItem>>({
     name: '',
     slug: '',
@@ -401,8 +404,9 @@ export default function CategoriesDataTable() {
                     Fill in the details to add a new category to your products.
                   </DialogDescription>
                 </DialogHeader>
-                <div className="grid grid-cols-2 gap-6 py-4">
-                  <div className="space-y-2">
+                <div className="grid gap-6 py-4">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
                     <Label htmlFor="name">Category Name</Label>
                     <Input
                       id="name"
@@ -420,6 +424,17 @@ export default function CategoriesDataTable() {
                       }
                     />
                   </div>
+                  </div>
+                  <div className="mb-8">
+                          <h2 className="text-lg font-semibold mb-3">Upload Category Image</h2>
+                          <div className="p-4 border rounded">
+                            <CompactFileInput
+                              multiple={true}
+                              maxSizeMB={1}
+                              onChange={setImages}
+                            />
+                          </div>
+                        </div>
                   
                 </div>
                 <DialogFooter>

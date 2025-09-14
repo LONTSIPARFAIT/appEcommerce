@@ -11,4 +11,5 @@ export interface CreateCategoryItem {
   slug: string;
   image: File|null;
   color: string;
+  description: string;
 }

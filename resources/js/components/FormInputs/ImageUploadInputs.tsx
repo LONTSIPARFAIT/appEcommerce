@@ -16,7 +16,7 @@ type FileInputProps = {
 };
 
 // Compact File Input Component
-const CompactFileInput: React.FC<FileInputProps> = ({
+export const CompactFileInput: React.FC<FileInputProps> = ({
   multiple = false,
   maxSizeMB = 1,
   onChange,
@@ -145,7 +145,7 @@ const CompactFileInput: React.FC<FileInputProps> = ({
 };
 
 // Dropzone File Input Component
-const DropzoneFileInput: React.FC<FileInputProps> = ({
+export const DropzoneFileInput: React.FC<FileInputProps> = ({
   multiple = false,
   maxSizeMB = 1,
   onChange,
@@ -347,37 +347,37 @@ const DropzoneFileInput: React.FC<FileInputProps> = ({
 };
 
 // Demo component
-const ImageUploadOne = () => {
-  const [files1, setFiles1] = useState<File[]>([]);
-  const [files2, setFiles2] = useState<File[]>([]);
+// const ImageUploadOne = () => {
+//   const [files1, setFiles1] = useState<File[]>([]);
+//   const [files2, setFiles2] = useState<File[]>([]);
 
-  return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Image Upload Components</h1>
+//   return (
+//     <div className="p-6 max-w-4xl mx-auto">
+//       <h1 className="text-2xl font-bold mb-6">Image Upload Components</h1>
 
-      <div className="mb-8">
-        <h2 className="text-lg font-semibold mb-3">1. Compact File Input</h2>
-        <div className="p-4 border rounded">
-          <CompactFileInput
-            multiple={true}
-            maxSizeMB={1}
-            onChange={setFiles1}
-          />
-        </div>
-      </div>
+//       <div className="mb-8">
+//         <h2 className="text-lg font-semibold mb-3">1. Compact File Input</h2>
+//         <div className="p-4 border rounded">
+//           <CompactFileInput
+//             multiple={true}
+//             maxSizeMB={1}
+//             onChange={setFiles1}
+//           />
+//         </div>
+//       </div>
 
-      <div className="mb-8">
-        <h2 className="text-lg font-semibold mb-3">2. Dropzone File Input</h2>
-        <div className="p-4 border rounded">
-          <DropzoneFileInput
-            multiple={true}
-            maxSizeMB={1}
-            onChange={setFiles2}
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
+//       <div className="mb-8">
+//         <h2 className="text-lg font-semibold mb-3">2. Dropzone File Input</h2>
+//         <div className="p-4 border rounded">
+//           <DropzoneFileInput
+//             multiple={true}
+//             maxSizeMB={1}
+//             onChange={setFiles2}
+//           />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
-export default ImageUploadOne;
+// export default ImageUploadOne;
