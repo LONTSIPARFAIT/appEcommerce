@@ -369,7 +369,7 @@ export default function CategoriesDataTable() {
     e.preventDefault();
     data.image = images[0] ;
     console.log(data);
-    router.post('/',data,{
+    router.post('/dashboard/categories',data,{
       onFinish: () => {
         reset()
         toast.success("Categorie creer avec success")

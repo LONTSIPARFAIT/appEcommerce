@@ -29,7 +29,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/categories', function () {
         return Inertia::render('dashboard/categories/index');
     })->name('dashboard.categories.index');
-    Route::post('/dashboard/categories', [CategoryController::class])->name('dashboard.categories');
+    Route::post('/dashboard/categories', [CategoryController::class,'save_category'])->name('dashboard.categories.save');
 });
 
 require __DIR__.'/settings.php';
