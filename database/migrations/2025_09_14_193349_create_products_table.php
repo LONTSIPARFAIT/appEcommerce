@@ -7,21 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * 
-  price: number;
-  originalPrice?: number;
-  rating: number;
-  reviewCount: number;
-  description: string;
-  features: string[];
-  images: string[];
-  colors: {
-    name: string;
-    value: string;
-  }[];
-  sizes: string[];
-  inStock: boolean;
-}
+     *
      * Run the migrations.
      */
     public function up(): void
@@ -30,7 +16,15 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('slug')->unique();
+            $table->decimal('price',10,2)->default(0);
+            $table->decimal('original_price',10,2)->default(0);
+            $table->decimal('rating',2,1)->default(4);
+            $table->integer('reviewCount')->default(50);
+            $table->text('description')->nullable();
+            $table->json('features')->nullable();
+            $table->json('image')->nullable();
+            $table->json('colors')->nullable();
+            $table->json('colors')->nullable();
             $table->timestamps();
         });
     }
