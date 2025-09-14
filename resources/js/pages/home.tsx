@@ -12,7 +12,7 @@ export default function home({categories}:{categories:CategoryItem[]}) {
             <div className="container mx-auto max-w-6xl">
                 <ShopBanner />
                 <div className="py-16">
-                    <ShopCategories />  
+                    <ShopCategories categories={categories} />  
                 </div>
                 <div className="py-8">
                     <ProductListing />  

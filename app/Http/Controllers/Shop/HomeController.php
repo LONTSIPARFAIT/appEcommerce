@@ -10,9 +10,10 @@ use Inertia\Inertia;
 class HomeController extends Controller
 {
     public function get_home_data(){
-        $categories = Category::latest()->get();
+        // $categories = Category::latest()->get();
+        $categories = Category::select('id','name','slug','image','color')->latest()->get();
 
-        Inertia::render('home', [
+        return Inertia::render('home', [
             'categories' => $categories
          ]);
     }
