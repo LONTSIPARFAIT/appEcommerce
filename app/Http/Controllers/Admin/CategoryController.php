@@ -18,7 +18,7 @@ class CategoryController extends Controller
 
         //slug
         $slug = Str::slug($request->name);
-        $new_categories = 
+        $new_categories = [];
 
         dd($request->all());
 
