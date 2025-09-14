@@ -5,7 +5,7 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, Sid
 import { dashboard } from '@/routes';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Box, Settings, Grid2X2, LayoutGrid } from 'lucide-react';
+import { Globe, Box, Settings, Grid2X2, LayoutGrid } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -33,9 +33,9 @@ const footerNavItems: NavItem[] = [
         icon: Settings,
     },
     {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#react',
-        icon: BookOpen,
+        title: 'Live site',
+        href: '/',
+        icon: Globe,
     },
 ];
 // const footerNavItems: NavItem[] = [
