@@ -14,5 +14,9 @@ class Category extends Model
         'color',
     ];
 
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
+
     // protected $guard=['id', 'timestamps'] ;
 }

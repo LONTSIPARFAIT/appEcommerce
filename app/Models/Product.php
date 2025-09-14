@@ -19,4 +19,8 @@ class Product extends Model
         'price'=>'decimal:2',
         'rating'=>'decimal:1',
     ];
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }
