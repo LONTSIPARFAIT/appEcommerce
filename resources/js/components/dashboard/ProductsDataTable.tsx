@@ -70,6 +70,7 @@ import * as XLSX from "xlsx";
 import { Link, router, useForm } from "@inertiajs/react";
 import { CreateProductItem } from "@/types/products";
 import { toast } from "react-toastify";
+import InputError from "../input-error";
 
 export type Product = {
   id: string;
@@ -82,7 +83,7 @@ export type Product = {
   status: "in-stock" | "out-stock";
 };
 
-const data: Product[] = [
+const products: Product[] = [
   {
     id: "prod-001",
     name: "Wireless Headphones",
@@ -287,18 +288,10 @@ export default function DashboardDataTable() {
   const [showDeleteDialog, setShowDeleteDialog] = React.useState(false);
   const [showAddDialog, setShowAddDialog] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [newProduct, setNewProduct] = React.useState<Partial<Product>>({
-    name: "",
-    category: "",
-    price: 0,
-    stock: 0,
-    status: "in-stock",
-    salesCount: 0,
-    image: "/placeholder.svg?height=40&width=40",
-  });
+ 
 
   const table = useReactTable({
-    data,
+    data: products,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -361,23 +354,6 @@ export default function DashboardDataTable() {
     XLSX.writeFile(workbook, "products.xlsx");
   };
 
-//   const handleAddProduct = () => {
-//     // In a real application, you would add the product to your database
-//     console.log("Adding new product:", newProduct);
-
-//     // Reset form and close dialog
-//     setNewProduct({
-//       name: "",
-//       category: "",
-//       price: 0,
-//       stock: 0,
-//       status: "in-stock",
-//       salesCount: 0,
-//       image: "/placeholder.svg?height=40&width=40",
-//     });
-//     setShowAddDialog(false);
-//   };
-
   const [images, setImages] = React.useState<File[]>([]);
 
   const { data, setData, processing, errors, reset } = useForm<Required<CreateProductItem>>({
@@ -396,7 +372,7 @@ export default function DashboardDataTable() {
   const submit:React.FormEventHandler = (e) => {
     e.preventDefault();
     data.image = images[0];
-    data.images = images[0];
+    data.images = images;
     console.log(data);
     router.post('/dashboard/product',data,{
       onFinish: () => {
@@ -425,7 +401,7 @@ export default function DashboardDataTable() {
               Products
             </h2>
             <p className="text-sm text-muted-foreground">
-              {data.length} items | Total Value: USD {formattedTotalValue}
+              {products.length} items | Total Value: USD {formattedTotalValue}
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -442,15 +418,15 @@ export default function DashboardDataTable() {
               <DialogContent className="sm:max-w-[750px]">
                 <form action="" onSubmit={submit}>
                   <DialogHeader>
-                  <DialogTitle>Add New Category</DialogTitle>
+                  <DialogTitle>AdAjouter un Produit</DialogTitle>
                   <DialogDescription>
-                    Fill in the details to add a new category to your products.
+                    Fill in the details to add a new product to your inventors.
                   </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-6 py-4">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                    <Label htmlFor="name">Category Name</Label>
+                    <Label htmlFor="name">Product Name</Label>
                     <Input
                       id="name"
                       value={data.name}
@@ -459,7 +435,7 @@ export default function DashboardDataTable() {
                     <InputError message={errors.name} className="mt-2" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="category">Category Tailwind Color Class eg:bg-red-100</Label>
+                    <Label htmlFor="category">Product Tailwind Color Class eg:bg-red-100</Label>
                     <Input
                       id="category"
                       value={data.color}
