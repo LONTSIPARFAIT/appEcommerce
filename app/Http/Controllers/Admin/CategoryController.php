@@ -20,9 +20,9 @@ class CategoryController extends Controller
         $slug = Str::slug($request->name);
         $new_categories = [
             'name' => $request->name,
-            'slug' => "beauty-fragrance",
+            'slug' => $slug,
             'image' => "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-            'color' => "bg-amber-50",
+            'color' => $request->color,
         ];
 
         dd($request->all());
