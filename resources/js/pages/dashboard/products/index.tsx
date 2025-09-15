@@ -2,6 +2,7 @@ import ProductsDataTable from '@/components/dashboard/ProductsDataTable';
 import AppLayout from '@/layouts/app-layout'
 import { BreadcrumbItem } from '@/types';
 import { CategoryItem } from '@/types/categories';
+import { ProductItem } from '@/types/products';
 import { Head } from '@inertiajs/react'
 import React from 'react'
 
@@ -12,12 +13,12 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Products({categories,products}:{categories:CategoryItem[], products:}) {
+export default function Products({categories,products}:{categories:CategoryItem[], products:ProductItem[]}) {
   return (
     <AppLayout breadcrumbs={breadcrumbs}>
         <Head title='Product' />
         <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
-            <ProductsDataTable />
+            <ProductsDataTable categories={categories} />
         </div>
     </AppLayout>
   )

@@ -19,7 +19,8 @@ export interface CreateProductItem {
   colors: string;
   is_featured: boolean;
 }
-export interface CreateProductItem {
+export interface ProductItem {
+  id: string;
   name: string;
   slug: string;
   category_id: string;
