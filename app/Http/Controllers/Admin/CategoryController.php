@@ -18,14 +18,17 @@ class CategoryController extends Controller
 
         //slug
         $slug = Str::slug($request->name);
-        $new_categories = [
+
+        //images
+
+        $new_category = [
             'name' => $request->name,
             'slug' => $slug,
             'image' => "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
             'color' => $request->color,
         ];
 
-        dd($new_categories);
+        dd($new_category);
 
         return to_route('dashboard.categories.index');
     }
