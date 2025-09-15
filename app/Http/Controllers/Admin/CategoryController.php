@@ -18,8 +18,12 @@ class CategoryController extends Controller
 
         //slug
         $slug = Str::slug($request->name);
+        $image = '';
 
         //images
+        if($request->hasFile('image')){
+            $image = $request->file('image')->store('categories','public');
+        }
 
         $new_category = [
             'name' => $request->name,
