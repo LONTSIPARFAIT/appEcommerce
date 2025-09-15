@@ -35,7 +35,7 @@ class CategoryController extends Controller
 
         $cat = Category::create($new_category);
 
-        dd($cat);
+        // dd($cat);
 
         return to_route('dashboard.categories.index');
     }

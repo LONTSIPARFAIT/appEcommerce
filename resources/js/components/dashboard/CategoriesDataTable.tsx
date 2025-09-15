@@ -72,6 +72,8 @@ import { CreateCategoryItem } from "@/types/categories";
 import { CompactFileInput } from "../FormInputs/ImageUploadInputs";
 import { Textarea } from "../ui/textarea";
 import InputError from "../input-error";
+import { toast } from 'react-toastify';
+
 
 export type Product = {
   id: string;
