@@ -149,21 +149,23 @@ export type Product = {
 //   },
 // ];
 
-export const columns: ColumnDef<Product>[] = [
+export const columns: ColumnDef<CategoryItem>[] = [
   {
     accessorKey: "image",
     header: "Image",
     cell: ({ row }) => {
+            const imagePath = row.original.image.startsWith("categories/") ? `/storage/${row.original.image}` : row.original.image;
+
         return (
-      <div className="flex items-center justify-center">
-        <img
-          src={row.getValue("image") || "/placeholder.svg"}
-          alt={row.getValue("name")}
-          width={40}
-          height={40}
-          className="rounded-md object-cover"
-        />
-      </div>
+        <div className="flex items-center justify-center">
+            <img
+            src={imagePath}
+            alt={row.getValue("name")}
+            width={40}
+            height={40}
+            className="rounded-md object-cover"
+            />
+        </div>
     )
     },
     enableSorting: false,
@@ -184,74 +186,6 @@ export const columns: ColumnDef<Product>[] = [
     cell: ({ row }) => (
       <div className="font-medium">{row.getValue("name")}</div>
     ),
-  },
-  {
-    accessorKey: "price",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Price
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => {
-      const price = Number.parseFloat(row.getValue("price"));
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(price);
-
-      return <div>{formatted}</div>;
-    },
-  },
-  {
-    accessorKey: "salesCount",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Sales Count
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => (
-      <div className="text-center">{row.getValue("salesCount")}</div>
-    ),
-  },
-  {
-    id: "totalSales",
-    header: "Total Sales",
-    cell: ({ row }) => {
-      const price = Number.parseFloat(row.getValue("price"));
-      const salesCount = Number.parseInt(row.getValue("salesCount"));
-      const totalSales = price * salesCount;
-
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(totalSales);
-
-      return <div>USD {formatted}</div>;
-    },
-  },
-  {
-    accessorKey: "category",
-    header: "Suppliers",
-    cell: ({ row }) => {
-        const id = row.original.id
-        return (
-            <Button variant="outline" size="sm">
-                <Link href={`${id}`} >View Suppliers</Link>
-            </Button>
-    );
-    }
   },
   {
     id: "actions",
@@ -340,11 +274,8 @@ export default function CategoriesDataTable({categories}:{categories:CategoryIte
       return {
         ID: rowData.id,
         Name: rowData.name,
-        Category: rowData.category,
-        Status: rowData.status,
-        Stock: rowData.stock,
-        "Sales Count": rowData.salesCount,
-        Price: `$${rowData.price.toFixed(2)}`,
+        Slug: rowData.slug,
+        Image: rowData.image,
       };
     });
 
