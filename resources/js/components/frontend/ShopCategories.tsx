@@ -262,7 +262,8 @@ export default function ShopCategories({categories}:{categories:CategoryItem[]})
             }}
           >
             <div className="w-full grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-4 md:gap-6">
-              {visibleCategories().map((category, idx) => (
+              {visibleCategories().map((category, idx) => {
+                return (
                 <Link prefetch
                   key={category.id}
                   href={`/category/${category.slug}`}
@@ -300,7 +301,8 @@ export default function ShopCategories({categories}:{categories:CategoryItem[]})
                     </h3>
                   </div>
                 </Link>
-              ))}
+              )
+              })}
             </div>
           </div>
         </div>
