@@ -375,11 +375,6 @@ export default function ProductsDataTable() {
                                                 <Input id="category" value={data.colors} onChange={(e) => setData('colors', e.target.value)} />
                                                 <InputError message={errors.colors} className="mt-2" />
                                             </div>
-                                            <div className="space-y-2">
-                                                <Label htmlFor="features">Caractéristiques du produit (séparées par des virgules) </Label>
-                                                <Input id="features" value={data.features} onChange={(e) => setData('features', e.target.value)} />
-                                                <InputError message={errors.features} className="mt-2" />
-                                            </div>
                                         </div>
                                         <div className="grid gap-6 md:grid-cols-2">
                                             <div className="space-y-2">
@@ -395,6 +390,11 @@ export default function ProductsDataTable() {
                                                     onChange={(e) => setData('original_price', Number(e.target.value))}
                                                 />
                                                 <InputError message={errors.original_price} className="mt-2" />
+                                            </div>                                 
+                                            <div className="space-y-2">
+                                                <Label htmlFor="features">Caractéristiques du produit (séparées par des virgules) </Label>
+                                                <Input id="features" value={data.features} onChange={(e) => setData('features', e.target.value)} />
+                                                <InputError message={errors.features} className="mt-2" />
                                             </div>
                                             <div className="space-y-2">
                                                 <Label htmlFor="features">Caractéristiques du produit (séparées par des virgules) </Label>
