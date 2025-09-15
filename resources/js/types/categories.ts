@@ -3,6 +3,7 @@ export interface CategoryItem {
   name: string;
   slug: string;
   image: string;
+  description: string;
   color: string;
 }
 

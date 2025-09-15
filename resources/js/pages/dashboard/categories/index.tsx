@@ -1,6 +1,7 @@
 import CategoriesDataTable from '@/components/dashboard/CategoriesDataTable';
 import AppLayout from '@/layouts/app-layout'
 import { BreadcrumbItem } from '@/types';
+import { CategoryItem } from '@/types/CategoryItem';
 import { Head } from '@inertiajs/react'
 import React from 'react'
 
