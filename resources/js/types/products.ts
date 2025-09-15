@@ -1,3 +1,5 @@
+import { CategoryItem } from "./categories";
+
 export interface SimilarProduct {
   id: string;
   name: string;
@@ -23,7 +25,7 @@ export interface ProductItem {
   id: string;
   name: string;
   slug: string;
-  category_id: string;
+  category: CategoryItem;
   price: number;
   original_price: number;
   description: string;
