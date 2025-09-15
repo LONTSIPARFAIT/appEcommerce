@@ -460,6 +460,39 @@ export default function DashboardDataTable() {
                     <InputError message={errors.features} className="mt-2" />
                   </div>
                   </div>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                    <Label htmlFor="name">Nom du Produit</Label>
+                    <Input
+                      id="name"
+                      value={data.name}
+                      onChange={(e) => setData('name', e.target.value)}
+                    />
+                    <InputError message={errors.name} className="mt-2" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="category">Couleurs du produit, par exemple: bleu marine=#15317E</Label>
+                    <Input
+                      id="category"
+                      value={data.colors}
+                      onChange={(e) =>
+                        setData('colors', e.target.value)
+                      }
+                    />
+                    <InputError message={errors.colors} className="mt-2" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="features">Caractéristiques du produit (séparées par des virgules) </Label>
+                    <Input
+                      id="features"
+                      value={data.features}
+                      onChange={(e) =>
+                        setData('features', e.target.value)
+                      }
+                    />
+                    <InputError message={errors.features} className="mt-2" />
+                  </div>
+                  </div>
                   <div className="grid w-full gap-3">
                     <Label htmlFor="message">Description</Label>
                     <Textarea value={data.description} onChange={(e)=>setData('description', e.target.value)} placeholder="Type your describe here." id="message" />
