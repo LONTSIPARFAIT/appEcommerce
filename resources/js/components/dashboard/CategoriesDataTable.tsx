@@ -86,74 +86,75 @@ export type Product = {
   status: "in-stock" | "out-stock";
 };
 
-const categories: Product[] = [
-  {
-    id: "prod-001",
-    name: "Wireless Headphones",
-    category: "Electronics",
-    salesCount: 342,
-    image: "/placeholder.svg?height=40&width=40",
-    stock: 56,
-    price: 129.99,
-    status: "in-stock",
-  },
-  {
-    id: "prod-002",
-    name: "Smart Watch",
-    category: "Electronics",
-    salesCount: 189,
-    image: "/placeholder.svg?height=40&width=40",
-    stock: 23,
-    price: 249.99,
-    status: "in-stock",
-  },
-  {
-    id: "prod-003",
-    name: "Yoga Mat",
-    category: "Fitness",
-    salesCount: 421,
-    image: "/placeholder.svg?height=40&width=40",
-    stock: 0,
-    price: 39.99,
-    status: "out-stock",
-  },
-  {
-    id: "prod-004",
-    name: "Coffee Maker",
-    category: "Home",
-    salesCount: 287,
-    image: "/placeholder.svg?height=40&width=40",
-    stock: 42,
-    price: 89.99,
-    status: "in-stock",
-  },
-  {
-    id: "prod-005",
-    name: "Bluetooth Speaker",
-    category: "Electronics",
-    salesCount: 512,
-    image: "/placeholder.svg?height=40&width=40",
-    stock: 78,
-    price: 79.99,
-    status: "in-stock",
-  },
-  {
-    id: "prod-006",
-    name: "Fitness Tracker",
-    category: "Fitness",
-    salesCount: 176,
-    image: "/placeholder.svg?height=40&width=40",
-    stock: 0,
-    price: 59.99,
-    status: "out-stock",
-  },
-];
+// const categories: Product[] = [
+//   {
+//     id: "prod-001",
+//     name: "Wireless Headphones",
+//     category: "Electronics",
+//     salesCount: 342,
+//     image: "/placeholder.svg?height=40&width=40",
+//     stock: 56,
+//     price: 129.99,
+//     status: "in-stock",
+//   },
+//   {
+//     id: "prod-002",
+//     name: "Smart Watch",
+//     category: "Electronics",
+//     salesCount: 189,
+//     image: "/placeholder.svg?height=40&width=40",
+//     stock: 23,
+//     price: 249.99,
+//     status: "in-stock",
+//   },
+//   {
+//     id: "prod-003",
+//     name: "Yoga Mat",
+//     category: "Fitness",
+//     salesCount: 421,
+//     image: "/placeholder.svg?height=40&width=40",
+//     stock: 0,
+//     price: 39.99,
+//     status: "out-stock",
+//   },
+//   {
+//     id: "prod-004",
+//     name: "Coffee Maker",
+//     category: "Home",
+//     salesCount: 287,
+//     image: "/placeholder.svg?height=40&width=40",
+//     stock: 42,
+//     price: 89.99,
+//     status: "in-stock",
+//   },
+//   {
+//     id: "prod-005",
+//     name: "Bluetooth Speaker",
+//     category: "Electronics",
+//     salesCount: 512,
+//     image: "/placeholder.svg?height=40&width=40",
+//     stock: 78,
+//     price: 79.99,
+//     status: "in-stock",
+//   },
+//   {
+//     id: "prod-006",
+//     name: "Fitness Tracker",
+//     category: "Fitness",
+//     salesCount: 176,
+//     image: "/placeholder.svg?height=40&width=40",
+//     stock: 0,
+//     price: 59.99,
+//     status: "out-stock",
+//   },
+// ];
 
 export const columns: ColumnDef<Product>[] = [
   {
     accessorKey: "image",
     header: "Image",
-    cell: ({ row }) => (
+    cell: ({ row }) => {
+        return (
       <div className="flex items-center justify-center">
         <img
           src={row.getValue("image") || "/placeholder.svg"}
@@ -163,7 +164,8 @@ export const columns: ColumnDef<Product>[] = [
           className="rounded-md object-cover"
         />
       </div>
-    ),
+    )
+    },
     enableSorting: false,
   },
   {
