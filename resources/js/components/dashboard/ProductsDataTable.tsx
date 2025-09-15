@@ -462,24 +462,22 @@ export default function DashboardDataTable() {
                   </div>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                    <Label htmlFor="name">Nom du Produit</Label>
+                    <Label htmlFor="price">Prix</Label>
                     <Input
-                      id="name"
-                      value={data.name}
-                      onChange={(e) => setData('name', e.target.value)}
+                      id="price"
+                      value={data.price}
+                      onChange={(e) => setData('price', Number(e.target.value))}
                     />
-                    <InputError message={errors.name} className="mt-2" />
+                    <InputError message={errors.price} className="mt-2" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="category">Couleurs du produit, par exemple: bleu marine=#15317E</Label>
+                    <Label htmlFor="original_price">Prix Original</Label>
                     <Input
-                      id="category"
-                      value={data.colors}
-                      onChange={(e) =>
-                        setData('colors', e.target.value)
-                      }
+                      id="original_price"
+                      value={data.original_price}
+                      onChange={(e) => setData('original_price', Number(e.target.value))}
                     />
-                    <InputError message={errors.colors} className="mt-2" />
+                    <InputError message={errors.original_price} className="mt-2" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="features">Caractéristiques du produit (séparées par des virgules) </Label>
@@ -494,7 +492,7 @@ export default function DashboardDataTable() {
                   </div>
                   </div>
                   <div className="grid w-full gap-3">
-                    <Label htmlFor="message">Description</Label>
+                    <Label htmlFor="message">Description du Produit</Label>
                     <Textarea value={data.description} onChange={(e)=>setData('description', e.target.value)} placeholder="Type your describe here." id="message" />
                       <InputError message={errors.description} className="mt-2" />
                   </div>
@@ -507,7 +505,7 @@ export default function DashboardDataTable() {
                               onChange={setImages}
                             />
                           </div>
-                        </div>
+                    </div>
                   
                 </div>
                 <DialogFooter>
