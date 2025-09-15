@@ -34,4 +34,5 @@ export interface ProductItem {
   images: File[]|null;
   colors: string;
   is_featured: boolean;
+  stock: boolean;
 }
