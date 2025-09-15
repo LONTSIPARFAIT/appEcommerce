@@ -292,7 +292,7 @@ export default function CategoriesDataTable({categories}:{categories:CategoryIte
 
   const [images, setImages] = React.useState<File[]>([]);
 
-  const { data, setData, processsing, errors, reset } = useForm<Required<CreateCategoryItem>>({
+  const { data, setData, processing, errors, reset } = useForm<Required<CreateCategoryItem>>({
     name: '',
     slug: '',
     color: '',
@@ -392,9 +392,7 @@ export default function CategoriesDataTable({categories}:{categories:CategoryIte
                   >
                     Cancel
                   </Button>
-                  <Button type="submit">
-                    Add Category
-                  </Button>
+                  <Button disabled={processing} type="submit"> {processing ? 'Creating...' : 'Add Category' } </Button>
                 </DialogFooter>
                 </form>
               </DialogContent>
