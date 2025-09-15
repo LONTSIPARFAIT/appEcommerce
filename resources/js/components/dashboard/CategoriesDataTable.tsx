@@ -68,7 +68,7 @@ import {
 } from "@/components/ui/card";
 import * as XLSX from "xlsx";
 import { Link, router, useForm } from "@inertiajs/react";
-import { CreateCategoryItem } from "@/types/categories";
+import { CategoryItem, CreateCategoryItem } from "@/types/categories";
 import { CompactFileInput } from "../FormInputs/ImageUploadInputs";
 import { Textarea } from "../ui/textarea";
 import InputError from "../input-error";
@@ -280,7 +280,7 @@ export const columns: ColumnDef<Product>[] = [
   },
 ];
 
-export default function CategoriesDataTable() {
+export default function CategoriesDataTable({categories}:{categories:CategoryItem[]}) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
