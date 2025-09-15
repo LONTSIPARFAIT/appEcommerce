@@ -67,7 +67,9 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import * as XLSX from "xlsx";
-import { Link } from "@inertiajs/react";
+import { Link, router, useForm } from "@inertiajs/react";
+import { CreateProductItem } from "@/types/products";
+import { toast } from "react-toastify";
 
 export type Product = {
   id: string;
@@ -359,22 +361,50 @@ export default function DashboardDataTable() {
     XLSX.writeFile(workbook, "products.xlsx");
   };
 
-  const handleAddProduct = () => {
-    // In a real application, you would add the product to your database
-    console.log("Adding new product:", newProduct);
+//   const handleAddProduct = () => {
+//     // In a real application, you would add the product to your database
+//     console.log("Adding new product:", newProduct);
 
-    // Reset form and close dialog
-    setNewProduct({
-      name: "",
-      category: "",
-      price: 0,
-      stock: 0,
-      status: "in-stock",
-      salesCount: 0,
-      image: "/placeholder.svg?height=40&width=40",
+//     // Reset form and close dialog
+//     setNewProduct({
+//       name: "",
+//       category: "",
+//       price: 0,
+//       stock: 0,
+//       status: "in-stock",
+//       salesCount: 0,
+//       image: "/placeholder.svg?height=40&width=40",
+//     });
+//     setShowAddDialog(false);
+//   };
+
+  const [images, setImages] = React.useState<File[]>([]);
+
+  const { data, setData, processing, errors, reset } = useForm<Required<CreateProductItem>>({
+    name: '',
+    slug: '',
+    colors: '',
+    image: null,
+    description: '',
+    is_featured: true,
+    price: 0,
+    original_price: 0,
+    features: '',
+    images: null,
+  }); 
+
+  const submit:React.FormEventHandler = (e) => {
+    e.preventDefault();
+    data.image = images[0];
+    data.images = images[0];
+    console.log(data);
+    router.post('/dashboard/product',data,{
+      onFinish: () => {
+        reset()
+        toast.success("Produit creer avec success")
+      }
     });
-    setShowAddDialog(false);
-  };
+  }
 
   // Calculate total value of all products
   const totalValue = data.reduce(
@@ -410,113 +440,52 @@ export default function DashboardDataTable() {
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[750px]">
-                <DialogHeader>
-                  <DialogTitle>Add New Product</DialogTitle>
+                <form action="" onSubmit={submit}>
+                  <DialogHeader>
+                  <DialogTitle>Add New Category</DialogTitle>
                   <DialogDescription>
-                    Fill in the details to add a new product to your products.
+                    Fill in the details to add a new category to your products.
                   </DialogDescription>
                 </DialogHeader>
-                <div className="grid grid-cols-2 gap-6 py-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Product Name</Label>
+                <div className="grid gap-6 py-4">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                    <Label htmlFor="name">Category Name</Label>
                     <Input
                       id="name"
-                      value={newProduct.name}
-                      onChange={(e) =>
-                        setNewProduct({ ...newProduct, name: e.target.value })
-                      }
+                      value={data.name}
+                      onChange={(e) => setData('name', e.target.value)}
                     />
+                    <InputError message={errors.name} className="mt-2" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="category">Category</Label>
+                    <Label htmlFor="category">Category Tailwind Color Class eg:bg-red-100</Label>
                     <Input
                       id="category"
-                      value={newProduct.category}
+                      value={data.color}
                       onChange={(e) =>
-                        setNewProduct({
-                          ...newProduct,
-                          category: e.target.value,
-                        })
+                        setData('color', e.target.value)
                       }
                     />
+                    <InputError message={errors.color} className="mt-2" />
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="price">Price</Label>
-                    <Input
-                      id="price"
-                      type="number"
-                      value={newProduct.price}
-                      onChange={(e) =>
-                        setNewProduct({
-                          ...newProduct,
-                          price: Number.parseFloat(e.target.value),
-                        })
-                      }
-                    />
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="stock">Stock</Label>
-                    <Input
-                      id="stock"
-                      type="number"
-                      value={newProduct.stock}
-                      onChange={(e) =>
-                        setNewProduct({
-                          ...newProduct,
-                          stock: Number.parseInt(e.target.value),
-                        })
-                      }
-                    />
+                  <div className="grid w-full gap-3">
+                    <Label htmlFor="message">Description</Label>
+                    <Textarea value={data.description} onChange={(e)=>setData('description', e.target.value)} placeholder="Type your message here." id="message" />
+                      <InputError message={errors.description} className="mt-2" />
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="salesCount">Sales Count</Label>
-                    <Input
-                      id="salesCount"
-                      type="number"
-                      value={newProduct.salesCount}
-                      onChange={(e) =>
-                        setNewProduct({
-                          ...newProduct,
-                          salesCount: Number.parseInt(e.target.value),
-                        })
-                      }
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="status">Status</Label>
-                    <Select
-                      value={newProduct.status}
-                      onValueChange={(value) =>
-                        setNewProduct({
-                          ...newProduct,
-                          status: value as "in-stock" | "out-stock",
-                        })
-                      }
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select status" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="in-stock">In Stock</SelectItem>
-                        <SelectItem value="out-stock">Out of Stock</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="supplier">Supplier</Label>
-                    <Input id="supplier" placeholder="Enter supplier name" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="image">Image URL</Label>
-                    <Input
-                      id="image"
-                      value={newProduct.image}
-                      onChange={(e) =>
-                        setNewProduct({ ...newProduct, image: e.target.value })
-                      }
-                      placeholder="Enter image URL"
-                    />
-                  </div>
+                  <div className="mb-8">
+                          <h2 className="text-lg font-semibold mb-3">Upload Category Image</h2>
+                          <div className="p-4 border rounded">
+                            <CompactFileInput
+                              multiple={true}
+                              maxSizeMB={1}
+                              onChange={setImages}
+                            />
+                          </div>
+                        </div>
+                  
                 </div>
                 <DialogFooter>
                   <Button
@@ -525,10 +494,9 @@ export default function DashboardDataTable() {
                   >
                     Cancel
                   </Button>
-                  <Button type="submit" onClick={handleAddProduct}>
-                    Add Product
-                  </Button>
+                  <Button disabled={processing} type="submit"> {processing ? 'Creating...' : 'Add Category' } </Button>
                 </DialogFooter>
+                </form>
               </DialogContent>
             </Dialog>
           </div>
