@@ -404,7 +404,7 @@ export default function DashboardDataTable() {
               Products
             </h2>
             <p className="text-sm text-muted-foreground">
-              {products.length} items | Total Value: USD {formattedTotalValue}
+              {products.length} articles | Valeur totale : USD {formattedTotalValue}
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -415,21 +415,21 @@ export default function DashboardDataTable() {
               <DialogTrigger asChild>
                 <Button className="bg-rose-500 hover:bg-rose-600">
                   <Plus className="mr-2 h-4 w-4" />
-                  Add New
+                  Nouveau Produit
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[750px]">
                 <form action="" onSubmit={submit}>
                   <DialogHeader>
-                  <DialogTitle>AdAjouter un Produit</DialogTitle>
+                  <DialogTitle>Ajouter un Produit</DialogTitle>
                   <DialogDescription>
-                    Fill in the details to add a new product to your inventors.
+                    Remplissez les détails pour ajouter un nouveau produit à votre inventaire.
                   </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-6 py-4">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                    <Label htmlFor="name">Product Name</Label>
+                    <Label htmlFor="name">Nom du Produit</Label>
                     <Input
                       id="name"
                       value={data.name}
@@ -438,7 +438,7 @@ export default function DashboardDataTable() {
                     <InputError message={errors.name} className="mt-2" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="category">Product Colors Class eg:Navy Blue=#15317E</Label>
+                    <Label htmlFor="category">Couleurs du produit, par exemple: bleu marine=#15317E</Label>
                     <Input
                       id="category"
                       value={data.colors}
@@ -449,15 +449,15 @@ export default function DashboardDataTable() {
                     <InputError message={errors.colors} className="mt-2" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="featured">Product featured</Label>
+                    <Label htmlFor="features">Caractéristiques du produit (séparées par des virgules) </Label>
                     <Input
-                      id="featured"
-                      value={data.colors}
+                      id="features"
+                      value={data.features}
                       onChange={(e) =>
-                        setData('colors', e.target.value)
+                        setData('features', e.target.value)
                       }
                     />
-                    <InputError message={errors.colors} className="mt-2" />
+                    <InputError message={errors.features} className="mt-2" />
                   </div>
                   </div>
                   <div className="grid w-full gap-3">
@@ -466,7 +466,7 @@ export default function DashboardDataTable() {
                       <InputError message={errors.description} className="mt-2" />
                   </div>
                   <div className="mb-8">
-                          <h2 className="text-lg font-semibold mb-3">Upload Product Images</h2>
+                          <h2 className="text-lg font-semibold mb-3">Téléchargez des images du Produit</h2>
                           <div className="p-4 border rounded">
                             <CompactFileInput
                               multiple={true}
@@ -583,7 +583,7 @@ export default function DashboardDataTable() {
       </CardContent>
       <CardFooter className="flex items-center justify-between border-t p-4">
         <div className="flex items-center gap-2">
-          <span className="text-sm text-muted-foreground">Rows per page:</span>
+          <span className="text-sm text-muted-foreground">Lignes par page :</span>
           <Select
             value={rowsPerPage.toString()}
             onValueChange={(value) => setRowsPerPage(Number(value))}
@@ -647,9 +647,8 @@ export default function DashboardDataTable() {
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action will delete{" "}
-              {table.getFilteredSelectedRowModel().rows.length} selected
-              product(s). This action cannot be undone.
+              Cette action supprimera{" "}
+              {table.getFilteredSelectedRowModel().rows.length} produit(s) sélectionné(s). Cette action ne peut pas être annulée..
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -658,7 +657,7 @@ export default function DashboardDataTable() {
               onClick={handleDeleteSelected}
               className="bg-destructive text-destructive-foreground"
             >
-              Delete
+              Supprimer
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
