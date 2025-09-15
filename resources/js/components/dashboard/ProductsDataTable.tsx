@@ -491,7 +491,7 @@ export default function DashboardDataTable() {
                     <InputError message={errors.features} className="mt-2" />
                   </div>
                   <div className="space-y-2">
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select onValueChange={(value)=>setData('category_id', value)} defaultValue={field.value}>
                         <SelectTrigger>
                         <SelectValue placeholder="Select a verified email to display" />
                         </SelectTrigger>
