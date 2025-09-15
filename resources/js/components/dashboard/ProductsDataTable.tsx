@@ -396,11 +396,6 @@ export default function ProductsDataTable() {
                                                 <Input id="features" value={data.features} onChange={(e) => setData('features', e.target.value)} />
                                                 <InputError message={errors.features} className="mt-2" />
                                             </div>
-                                            <div className="space-y-2">
-                                                <Label htmlFor="features">Caractéristiques du produit (séparées par des virgules) </Label>
-                                                <Input id="features" value={data.features} onChange={(e) => setData('features', e.target.value)} />
-                                                <InputError message={errors.features} className="mt-2" />
-                                            </div>
                                             <div className="items-top flex space-x-2">
                                                 <Checkbox
                                                     checked={data.is_featured}
