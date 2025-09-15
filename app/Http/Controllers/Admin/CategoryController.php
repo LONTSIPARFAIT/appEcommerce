@@ -19,7 +19,7 @@ class CategoryController extends Controller
         //slug
         $slug = Str::slug($request->name);
         $new_categories = [
-            'name' => "Beauty & Fragrance",
+            'name' => $request->name,
             'slug' => "beauty-fragrance",
             'image' => "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
             'color' => "bg-amber-50",
