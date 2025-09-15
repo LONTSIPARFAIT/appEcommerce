@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Inertia\Inertia;
 
 class CategoryController extends Controller
 {
@@ -38,5 +39,13 @@ class CategoryController extends Controller
         // dd($cat);
 
         return to_route('dashboard.categories.index');
+    }
+
+    public function list_categories(){
+        $categories = Category::latest()->get();
+
+        return Inertia::render('dashboard/categories/index', [
+            'categories' => $categories
+        ]);
     }
 }
