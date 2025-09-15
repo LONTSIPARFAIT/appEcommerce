@@ -16,6 +16,7 @@ export interface CreateProductItem {
   image: File|null;
   images: File[]|null;
   colors: string;
+  is_featured: string;
 }
 
-// 'rating,'sizes', 'is_featured', 'in_stock'
+// 'is_featured', 'in_stock'
