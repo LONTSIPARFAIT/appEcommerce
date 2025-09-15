@@ -15,7 +15,8 @@ class ProductController extends Controller
         $categories = Category::latest()->get();
 
         return Inertia::render('dashboard/products/index', [
-            'products' => $products
+            'products' => $products,
+            'categories' => $categories,
         ]);
     }
 }
