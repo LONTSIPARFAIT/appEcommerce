@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -28,11 +29,13 @@ class CategoryController extends Controller
         $new_category = [
             'name' => $request->name,
             'slug' => $slug,
-            'image' => "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+            'image' => $image,
             'color' => $request->color,
         ];
 
-        dd($new_category);
+        $cat = Category::create($new_category);
+
+        dd($cat);
 
         return to_route('dashboard.categories.index');
     }
