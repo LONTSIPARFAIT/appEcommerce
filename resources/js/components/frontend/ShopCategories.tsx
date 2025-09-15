@@ -263,6 +263,7 @@ export default function ShopCategories({categories}:{categories:CategoryItem[]})
           >
             <div className="w-full grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-4 md:gap-6">
               {visibleCategories().map((category, idx) => {
+                  const imagePath = category.image.startsWith("categories/") ? `/storage/${category.image}` : category.image;
                 return (
                 <Link prefetch
                   key={category.id}
@@ -289,14 +290,14 @@ export default function ShopCategories({categories}:{categories:CategoryItem[]})
                     <div className="relative w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center">
                       <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-black/10"></div>
                       <img
-                        src={category.image}
+                        src={imagePath}
                         alt={category.name}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                     </div>
                   </div>
                   <div className="mt-3 text-center">
-                    <h3 className="text-xs sm:text-sm font-medium text-gray-800 line-clamp-2 group-hover:text-amber-700 transition-colors">
+                    <h3 className="text-xs sm:text-sm font-medium text-gray-800 line-clamp-2 group-hover:text-amber-600 transition-colors">
                       {category.name}
                     </h3>
                   </div>
