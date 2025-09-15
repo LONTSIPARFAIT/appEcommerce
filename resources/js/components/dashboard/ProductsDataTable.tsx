@@ -449,9 +449,9 @@ export default function DashboardDataTable() {
                     <InputError message={errors.colors} className="mt-2" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="category">Product Colors Class eg:Navy Blue=#15317E</Label>
+                    <Label htmlFor="featured">Product featured</Label>
                     <Input
-                      id="category"
+                      id="featured"
                       value={data.colors}
                       onChange={(e) =>
                         setData('colors', e.target.value)
