@@ -11,7 +11,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Categories() {
+export default function Categories({categories}:{categories:CategoryItem[]}) {
   return (
     <AppLayout breadcrumbs={breadcrumbs}>
         <Head title='Categories' />
