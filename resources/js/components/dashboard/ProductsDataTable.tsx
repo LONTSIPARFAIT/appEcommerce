@@ -71,6 +71,8 @@ import { Link, router, useForm } from "@inertiajs/react";
 import { CreateProductItem } from "@/types/products";
 import { toast } from "react-toastify";
 import InputError from "../input-error";
+import { Textarea } from "../ui/textarea";
+import { CompactFileInput } from "../FormInputs/ImageUploadInputs";
 
 export type Product = {
   id: string;
@@ -359,6 +361,7 @@ export default function DashboardDataTable() {
   const { data, setData, processing, errors, reset } = useForm<Required<CreateProductItem>>({
     name: '',
     slug: '',
+    category_id: '',
     colors: '',
     image: null,
     description: '',
@@ -435,24 +438,35 @@ export default function DashboardDataTable() {
                     <InputError message={errors.name} className="mt-2" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="category">Product Tailwind Color Class eg:bg-red-100</Label>
+                    <Label htmlFor="category">Product Colors Class eg:Navy Blue=#15317E</Label>
                     <Input
                       id="category"
-                      value={data.color}
+                      value={data.colors}
                       onChange={(e) =>
-                        setData('color', e.target.value)
+                        setData('colors', e.target.value)
                       }
                     />
-                    <InputError message={errors.color} className="mt-2" />
+                    <InputError message={errors.colors} className="mt-2" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="category">Product Colors Class eg:Navy Blue=#15317E</Label>
+                    <Input
+                      id="category"
+                      value={data.colors}
+                      onChange={(e) =>
+                        setData('colors', e.target.value)
+                      }
+                    />
+                    <InputError message={errors.colors} className="mt-2" />
                   </div>
                   </div>
                   <div className="grid w-full gap-3">
                     <Label htmlFor="message">Description</Label>
-                    <Textarea value={data.description} onChange={(e)=>setData('description', e.target.value)} placeholder="Type your message here." id="message" />
+                    <Textarea value={data.description} onChange={(e)=>setData('description', e.target.value)} placeholder="Type your describe here." id="message" />
                       <InputError message={errors.description} className="mt-2" />
                   </div>
                   <div className="mb-8">
-                          <h2 className="text-lg font-semibold mb-3">Upload Category Image</h2>
+                          <h2 className="text-lg font-semibold mb-3">Upload Product Images</h2>
                           <div className="p-4 border rounded">
                             <CompactFileInput
                               multiple={true}
