@@ -14,9 +14,9 @@ export interface CreateProductItem {
   description: string;
   features: string;
   reviewCount: number;
-  image: string;
-  images: string;
+  image: File|null;
+  images: File[];
   colors: string;
 }
 
-// 'rating,'', 'sizes', 'is_featured', 'in_stock'
+// 'rating,'sizes', 'is_featured', 'in_stock'
