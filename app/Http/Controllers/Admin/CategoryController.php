@@ -25,7 +25,7 @@ class CategoryController extends Controller
             'color' => $request->color,
         ];
 
-        dd($request->all());
+        dd($new_categories);
 
         return to_route('dashboard.categories.index');
     }
