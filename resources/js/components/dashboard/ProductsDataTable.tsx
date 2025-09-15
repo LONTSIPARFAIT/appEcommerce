@@ -371,12 +371,12 @@ export default function ProductsDataTable() {
                                                 <InputError message={errors.name} className="mt-2" />
                                             </div>
                                             <div className="space-y-2">
-                                                <Label htmlFor="category">Couleurs du produit, par exemple: bleu marine=#15317E</Label>
+                                                <Label htmlFor="category">Couleurs du produit exple: bleu marine=#15317E</Label>
                                                 <Input id="category" value={data.colors} onChange={(e) => setData('colors', e.target.value)} />
                                                 <InputError message={errors.colors} className="mt-2" />
                                             </div>
                                         </div>
-                                        <div className="grid gap-6 md:grid-cols-2">
+                                        <div className="grid gap-6 md:grid-cols-3">
                                             <div className="space-y-2">
                                                 <Label htmlFor="price">Prix</Label>
                                                 <Input id="price" value={data.price} onChange={(e) => setData('price', Number(e.target.value))} />
@@ -390,9 +390,24 @@ export default function ProductsDataTable() {
                                                     onChange={(e) => setData('original_price', Number(e.target.value))}
                                                 />
                                                 <InputError message={errors.original_price} className="mt-2" />
-                                            </div>                                 
+                                            </div>
                                             <div className="space-y-2">
-                                                <Label htmlFor="features">Caractéristiques du produit (séparées par des virgules) </Label>
+                                                <Label htmlFor="category">Selectionner la Categorie</Label>
+                                                <Select onValueChange={(value) => setData('category_id', value)} defaultValue={'1'}>
+                                                    <SelectTrigger>
+                                                        <SelectValue placeholder="Select a verified email to display" />
+                                                    </SelectTrigger>
+                                                    <SelectContent>
+                                                        <SelectItem value="m@example.com">m@example.com</SelectItem>
+                                                        <SelectItem value="m@google.com">m@google.com</SelectItem>
+                                                        <SelectItem value="m@support.com">m@support.com</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                            </div>
+                                        </div>
+                                        <div className="grid gap-4 md:grid-cols-2">                   
+                                            <div className="space-y-2">
+                                                <Label htmlFor="features">Caractéristiques du produit (séparées par des ",") </Label>
                                                 <Input id="features" value={data.features} onChange={(e) => setData('features', e.target.value)} />
                                                 <InputError message={errors.features} className="mt-2" />
                                             </div>
@@ -411,33 +426,23 @@ export default function ProductsDataTable() {
                                                     </label>
                                                 </div>
                                             </div>
-                                            <div className="space-y-2">
-                                                <Select onValueChange={(value) => setData('category_id', value)} defaultValue={'1'}>
-                                                    <SelectTrigger>
-                                                        <SelectValue placeholder="Select a verified email to display" />
-                                                    </SelectTrigger>
-                                                    <SelectContent>
-                                                        <SelectItem value="m@example.com">m@example.com</SelectItem>
-                                                        <SelectItem value="m@google.com">m@google.com</SelectItem>
-                                                        <SelectItem value="m@support.com">m@support.com</SelectItem>
-                                                    </SelectContent>
-                                                </Select>
+                                        </div>
+                                        <div className="grid md:grid-cols-2">
+                                            <div className="grid w-full gap-3">
+                                                <Label htmlFor="message">Description du Produit</Label>
+                                                <Textarea
+                                                    value={data.description}
+                                                    onChange={(e) => setData('description', e.target.value)}
+                                                    placeholder="Type your describe here."
+                                                    id="message"
+                                                />
+                                                <InputError message={errors.description} className="mt-2" />
                                             </div>
-                                        </div>
-                                        <div className="grid w-full gap-3">
-                                            <Label htmlFor="message">Description du Produit</Label>
-                                            <Textarea
-                                                value={data.description}
-                                                onChange={(e) => setData('description', e.target.value)}
-                                                placeholder="Type your describe here."
-                                                id="message"
-                                            />
-                                            <InputError message={errors.description} className="mt-2" />
-                                        </div>
-                                        <div className="mb-8">
-                                            <h2 className="mb-3 text-lg font-semibold">Téléchargez des images du Produit</h2>
-                                            <div className="rounded border p-4">
-                                                <CompactFileInput multiple={true} maxSizeMB={1} onChange={setImages} />
+                                            <div className="mb-8">
+                                                <h2 className="mb-3 text-lg font-semibold">Téléchargez des images du Produit</h2>
+                                                <div className="rounded border p-4">
+                                                    <CompactFileInput multiple={true} maxSizeMB={1} onChange={setImages} />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
