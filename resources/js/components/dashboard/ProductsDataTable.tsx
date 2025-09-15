@@ -427,8 +427,8 @@ export default function ProductsDataTable() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="grid md:grid-cols-2">
-                                            <div className="grid w-full gap-3">
+                                        <div className="grid md:grid-cols-2 gap-4">
+                                            <div className="grid w-full gap-1.5">
                                                 <Label htmlFor="message">Description du Produit</Label>
                                                 <Textarea
                                                     value={data.description}
@@ -438,7 +438,7 @@ export default function ProductsDataTable() {
                                                 />
                                                 <InputError message={errors.description} className="mt-2" />
                                             </div>
-                                            <div className="mb-8">
+                                            <div className="">
                                                 <h2 className="mb-3 text-lg font-semibold">Téléchargez des images du Produit</h2>
                                                 <div className="rounded border p-4">
                                                     <CompactFileInput multiple={true} maxSizeMB={1} onChange={setImages} />
