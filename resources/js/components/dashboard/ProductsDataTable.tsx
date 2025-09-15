@@ -492,11 +492,9 @@ export default function DashboardDataTable() {
                   </div>
                   <div className="space-y-2">
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
                         <SelectTrigger>
-                            <SelectValue placeholder="Select a verified email to display" />
+                        <SelectValue placeholder="Select a verified email to display" />
                         </SelectTrigger>
-                        </FormControl>
                         <SelectContent>
                         <SelectItem value="m@example.com">m@example.com</SelectItem>
                         <SelectItem value="m@google.com">m@google.com</SelectItem>
