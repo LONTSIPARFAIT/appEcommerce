@@ -348,41 +348,41 @@ export default function CategoriesDataTable({categories}:{categories:CategoryIte
                 <div className="grid gap-6 py-4">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                    <Label htmlFor="name">Category Name</Label>
-                    <Input
-                      id="name"
-                      value={data.name}
-                      onChange={(e) => setData('name', e.target.value)}
+                        <Label htmlFor="name">Category Name</Label>
+                        <Input
+                        id="name"
+                        value={data.name}
+                        onChange={(e) => setData('name', e.target.value)}
                     />
                     <InputError message={errors.name} className="mt-2" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="category">Category Tailwind Color Class eg:bg-red-100</Label>
-                    <Input
-                      id="category"
-                      value={data.color}
-                      onChange={(e) =>
-                        setData('color', e.target.value)
-                      }
-                    />
-                    <InputError message={errors.color} className="mt-2" />
-                  </div>
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="category">Category Tailwind Color Class eg:bg-red-100</Label>
+                        <Input
+                            id="category"
+                            value={data.color}
+                            onChange={(e) =>
+                                setData('color', e.target.value)
+                            }
+                        />
+                        <InputError message={errors.color} className="mt-2" />
+                    </div>
                   </div>
                   <div className="grid w-full gap-3">
-                    <Label htmlFor="message">Description</Label>
-                    <Textarea value={data.description} onChange={(e)=>setData('description', e.target.value)} placeholder="Type your message here." id="message" />
-                      <InputError message={errors.description} className="mt-2" />
+                       <Label htmlFor="message">Description</Label>
+                       <Textarea value={data.description} onChange={(e)=>setData('description', e.target.value)} placeholder="Type your message here." id="message" />
+                       <InputError message={errors.description} className="mt-2" />
                   </div>
-                  <div className="mb-8">
-                          <h2 className="text-lg font-semibold mb-3">Upload Category Image</h2>
-                          <div className="p-4 border rounded">
-                            <CompactFileInput
-                              multiple={true}
-                              maxSizeMB={1}
-                              onChange={setImages}
-                            />
-                          </div>
-                        </div>
+                    <div className="mb-8">
+                            <h2 className="text-lg font-semibold mb-3">Upload Category Image</h2>
+                            <div className="p-4 border rounded">
+                                <CompactFileInput
+                                multiple={true}
+                                maxSizeMB={1}
+                                onChange={setImages}
+                                />
+                            </div>
+                    </div>
                   
                 </div>
                 <DialogFooter>
