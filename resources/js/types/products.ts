@@ -13,9 +13,8 @@ export interface CreateProductItem {
   original_price: number;
   description: string;
   features: string;
-  reviewCount: number;
   image: File|null;
-  images: File[];
+  images: File[]|null;
   colors: string;
 }
 
