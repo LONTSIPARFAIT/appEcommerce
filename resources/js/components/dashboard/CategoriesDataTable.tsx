@@ -292,7 +292,7 @@ export default function CategoriesDataTable({categories}:{categories:CategoryIte
 
   const [images, setImages] = React.useState<File[]>([]);
 
-  const { data, setData, post, processsing, errors, reset } = useForm<Required<CreateCategoryItem>>({
+  const { data, setData, processsing, errors, reset } = useForm<Required<CreateCategoryItem>>({
     name: '',
     slug: '',
     color: '',
