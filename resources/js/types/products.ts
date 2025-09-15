@@ -16,7 +16,7 @@ export interface CreateProductItem {
   image: File|null;
   images: File[]|null;
   colors: string;
-  is_featured: string;
+  is_featured: boolean;
 }
 
 // 'is_featured', 'in_stock'
