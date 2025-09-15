@@ -11,9 +11,12 @@ export interface CreateProductItem {
   slug: string;
   price: number;
   original_price: number;
-  rating: number;
+  description: string;
+  features: string;
   reviewCount: number;
   image: string;
+  images: string;
+  colors: string;
 }
 
-//  '', 'rating', 'reviewCount', 'description', 'features', 'image', 'images', 'colors', 'sizes', 'is_featured', 'in_stock'
+// 'rating,'', 'sizes', 'is_featured', 'in_stock'
