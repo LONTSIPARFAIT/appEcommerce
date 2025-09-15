@@ -18,5 +18,3 @@ export interface CreateProductItem {
   colors: string;
   is_featured: boolean;
 }
-
-// 'is_featured', 'in_stock'
