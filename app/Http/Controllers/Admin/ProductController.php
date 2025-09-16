@@ -12,8 +12,8 @@ use Inertia\Inertia;
 class ProductController extends Controller
 {
     public function list_products(){
-        $products = Product::latest()->get();
         $categories = Category::latest()->get();
+        $products = Product::with('category')->latest()->get();
 
         return Inertia::render('dashboard/products/index', [
             'products' => $products,
