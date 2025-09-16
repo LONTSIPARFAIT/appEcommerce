@@ -32,10 +32,11 @@ class ProductController extends Controller
         //slug
         $slug = Str::slug($request->name);
         $image = '';
+        $images = [];
 
         //images
         if($request->hasFile('image')){
-            $image = $request->file('image')->store('categories','public');
+            $image = $request->file('image')->store('products','public');
         }
 
         $new_category = [
