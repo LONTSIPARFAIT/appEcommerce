@@ -30,8 +30,8 @@ export interface ProductItem {
   original_price: number;
   description: string;
   features: string;
-  image: File|null;
-  images: File[]|null;
+  image: string|null;
+  images: string|null;
   colors: string;
   is_featured: boolean;
   in_stock: boolean;

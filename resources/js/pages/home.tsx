@@ -6,7 +6,7 @@ import { CategoryItem } from '@/types/categories'
 import { ProductItem } from '@/types/products'
 
 export default function home({ categories,products }:{categories:CategoryItem[],products:ProductItem[]}) {
-    // console.log(categories);
+    console.log(categories);
   return (
     <ShopFrontLayout>
         <div className="min-h-screen">
