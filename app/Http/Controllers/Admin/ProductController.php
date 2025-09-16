@@ -69,7 +69,7 @@ class ProductController extends Controller
         $prod = Product::create($new_product);
 
         // dd($prod);
-         return redirect()->route('dashboard.products.index')->with('success', 'Produit ajouté avec succès.');
-        // return to_route('dashboard.products.index');
+        //  return redirect()->route('dashboard.products.index')->with('success', 'Produit ajouté avec succès.');
+        return to_route('dashboard.products.index');
     }
 }
