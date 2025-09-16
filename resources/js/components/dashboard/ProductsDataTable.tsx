@@ -56,17 +56,20 @@ export const columns: ColumnDef<Product>[] = [
     {
         accessorKey: 'image',
         header: 'Image',
-        cell: ({ row }) => (
-            <div className="flex items-center justify-center">
-                <img
-                    src={row.getValue('image') || '/placeholder.svg'}
-                    alt={row.getValue('name')}
-                    width={40}
-                    height={40}
-                    className="rounded-md object-cover"
-                />
-            </div>
-        ),
+        cell: ({ row }) => {
+            return (
+                <div className="flex items-center justify-center">
+                    <img
+                        src={row.original.image}
+                        // src={row.getValue('image') || '/placeholder.svg'}
+                        alt={row.getValue('name')}
+                        width={40}
+                        height={40}
+                        className="rounded-md object-cover"
+                    />
+                </div>
+            );
+        },
         enableSorting: false,
     },
     {

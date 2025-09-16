@@ -15,13 +15,13 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Products({categories,products}:{categories:CategoryItem[], products:ProductItem[]}) {
   const data:Product[] = products.map((item)=>{
-  const imagePath = `/storage/products/${item.image}`;
+  // const imagePath = `/storage/products/${item.image}`;
     return  {
       id: item.id,
       name: item.name,
       category: item.category.name,
       salesCount: 0,
-      image: imagePath,
+      image: `/storage/products/${item.image}`,
       stock: 0,
       price: item.price,
       status: item.in_stock ? "in-stock":"out-stock",
