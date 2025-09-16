@@ -20,4 +20,16 @@ class HomeController extends Controller
             'products' => $products,
          ]);
     }
+    public function show_detail($slug){
+        
+        $product = Product::firstOrFail($slug);
+        $product -> load('category');
+
+        $similarProducts = Product::similar( $product->id)->get();
+
+        return Inertia::render('product-details', [
+            'product' => $product,
+            'similarProducts' => $similarProducts,
+         ]);
+    }
 }

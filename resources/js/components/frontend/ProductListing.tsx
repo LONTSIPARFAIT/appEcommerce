@@ -58,7 +58,7 @@ const ProductCard: React.FC<{
 //   onFavoriteToggle: (id: string) => void;
   onAddToCart: (id: number) => void;
 }> = ({ product, onAddToCart }) => {
-    const imagePath = `/storage/${product.image[0]}`;
+    const imagePath = `/storage/${product.images[0]}`;
     const discount = product.original_price - product.price;
     const discountPercentage = (discount / product.original_price) * 100;
     const priceAfterDiscount = product.original_price - discount;
