@@ -23,10 +23,7 @@ interface Product {
   description: string;
   features: string[];
   images: string[];
-  colors: {
-    name: string;
-    value: string;
-  }[];
+  colors: string[];
   sizes: string[];
   inStock: boolean;
 }
@@ -209,24 +206,27 @@ const ProductDetails = ({product,similarProducts}:{product:Product, similarProdu
           </div>
 
           <div className="flex space-x-4 overflow-auto pb-2">
-            {product.images.map((image, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedImage(index)}
-                className={`relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg ${
-                  selectedImage === index
-                    ? "ring-2 ring-indigo-600"
-                    : "ring-1 ring-gray-200"
-                }`}
-              >
-                <img
-                  src={image}
-                  alt={`${product.name} - View ${index + 1}`}
-                  className="object-cover"
-                  sizes="80px"
-                />
-              </button>
-            ))}
+            {product.images.map((image, index) => {
+                const imagePath = `/storage/${image}`
+                return (
+                    <button
+                        key={index}
+                        onClick={() => setSelectedImage(index)}
+                        className={`relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg ${
+                        selectedImage === index
+                            ? "ring-2 ring-indigo-600"
+                            : "ring-1 ring-gray-200"
+                        }`}
+                    >
+                        <img
+                        src={imagePath}
+                        alt={`${product.name} - View ${index + 1}`}
+                        className="object-cover"
+                        sizes="80px"
+                        />
+                    </button>
+                )
+            })}
           </div>
         </div>
 
@@ -234,7 +234,7 @@ const ProductDetails = ({product,similarProducts}:{product:Product, similarProdu
         <div className="flex flex-col space-y-6">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">{product.name}</h1>
-            <div className="mt-2 flex items-center">
+            {/* <div className="mt-2 flex items-center">
               <div className="flex items-center">
                 {[...Array(5)].map((_, i) => (
                   <Star
@@ -252,7 +252,7 @@ const ProductDetails = ({product,similarProducts}:{product:Product, similarProdu
               <p className="ml-2 text-sm text-gray-500">
                 {product.rating} ({product.reviewCount} reviews)
               </p>
-            </div>
+            </div> */}
           </div>
 
           <div className="border-t border-b py-4">
@@ -288,8 +288,11 @@ const ProductDetails = ({product,similarProducts}:{product:Product, similarProdu
             <div>
               <h3 className="text-sm font-medium text-gray-900">Color</h3>
               <div className="mt-2 flex space-x-3">
-                {product.colors.map((color, index) => {
-                    const color = {}
+                {product.colors.map((colorStr, index) => {
+                    const color = {
+                        name:colorStr.split('=')[0],
+                        value:colorStr.split('=')[1],
+                    };
                     return (
                         <button
                             key={index}
