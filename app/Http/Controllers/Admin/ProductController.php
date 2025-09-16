@@ -66,7 +66,7 @@ class ProductController extends Controller
 
         $prod = Product::create($new_product);
 
-        // dd($cat);
+        dd($prod);
 
         return to_route('dashboard.products.index');
     }
