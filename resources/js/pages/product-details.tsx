@@ -137,7 +137,8 @@ const frequentlyBoughtTogether: FrequentlyBoughtTogether[] = [
   },
 ];
 
-const ProductDetails = () => {
+const ProductDetails = ({product,similarProducts}:{product:Product[], similarProducts:SimilarProduct}) => {
+    console.log(product,similarProducts);
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState(0);
   const [selectedSize, setSelectedSize] = useState(0);
