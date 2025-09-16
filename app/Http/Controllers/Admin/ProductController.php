@@ -60,7 +60,7 @@ class ProductController extends Controller
             'is_featured' => $request->is_featured,
             'price' => $request->price,
             'original_price' => $request->original_price,
-            'features' => $request->featured,
+            'features' => $request->features,
             'images' => $images,
             'category_id' => $request->category_id,
         ];

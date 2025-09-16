@@ -3,7 +3,7 @@ import { SimilarProduct } from '@/types/products'
 import { useState } from "react";
 import ShopFrontLayout from '@/layouts/shop-front-layout'
 import {
-  Star,
+//   Star,
   Heart,
   ShoppingCart,
   Share2,
