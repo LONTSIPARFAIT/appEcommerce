@@ -22,7 +22,7 @@ export interface CreateProductItem {
   is_featured: boolean;
 }
 export interface ProductItem {
-  id: string;
+  id: number;
   name: string;
   slug: string;
   category: CategoryItem;
