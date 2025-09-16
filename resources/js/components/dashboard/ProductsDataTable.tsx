@@ -52,69 +52,6 @@ export type Product = {
     status: 'in-stock' | 'out-stock';
 };
 
-const products: Product[] = [
-    {
-        id: 'prod-001',
-        name: 'Wireless Headphones',
-        category: 'Electronics',
-        salesCount: 342,
-        image: '/placeholder.svg?height=40&width=40',
-        stock: 56,
-        price: 129.99,
-        status: 'in-stock',
-    },
-    {
-        id: 'prod-002',
-        name: 'Smart Watch',
-        category: 'Electronics',
-        salesCount: 189,
-        image: '/placeholder.svg?height=40&width=40',
-        stock: 23,
-        price: 249.99,
-        status: 'in-stock',
-    },
-    {
-        id: 'prod-003',
-        name: 'Yoga Mat',
-        category: 'Fitness',
-        salesCount: 421,
-        image: '/placeholder.svg?height=40&width=40',
-        stock: 0,
-        price: 39.99,
-        status: 'out-stock',
-    },
-    {
-        id: 'prod-004',
-        name: 'Coffee Maker',
-        category: 'Home',
-        salesCount: 287,
-        image: '/placeholder.svg?height=40&width=40',
-        stock: 42,
-        price: 89.99,
-        status: 'in-stock',
-    },
-    {
-        id: 'prod-005',
-        name: 'Bluetooth Speaker',
-        category: 'Electronics',
-        salesCount: 512,
-        image: '/placeholder.svg?height=40&width=40',
-        stock: 78,
-        price: 79.99,
-        status: 'in-stock',
-    },
-    {
-        id: 'prod-006',
-        name: 'Fitness Tracker',
-        category: 'Fitness',
-        salesCount: 176,
-        image: '/placeholder.svg?height=40&width=40',
-        stock: 0,
-        price: 59.99,
-        status: 'out-stock',
-    },
-];
-
 export const columns: ColumnDef<Product>[] = [
     {
         accessorKey: 'image',
@@ -228,7 +165,12 @@ export const columns: ColumnDef<Product>[] = [
     },
 ];
 
-export default function ProductsDataTable() {
+export default function ProductsDataTable({categories,products}:{
+    products:Product[],
+    categories:{
+    label: string,
+    value:number
+}[]}) {
     const [sorting, setSorting] = React.useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
     const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
@@ -303,7 +245,7 @@ export default function ProductsDataTable() {
     const { data, setData, processing, errors, reset } = useForm<Required<CreateProductItem>>({
         name: '',
         slug: '',
-        category_id: '',
+        category_id: 1,
         colors: '',
         image: null,
         description: '',
@@ -398,14 +340,14 @@ export default function ProductsDataTable() {
                                                         <SelectValue placeholder="Select a verified email to display" />
                                                     </SelectTrigger>
                                                     <SelectContent>
-                                                        <SelectItem value="m@example.com">m@example.com</SelectItem>
-                                                        <SelectItem value="m@google.com">m@google.com</SelectItem>
-                                                        <SelectItem value="m@support.com">m@support.com</SelectItem>
+                                                        {categories.map((item)=>{
+                                                            return <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>
+                                                        })}
                                                     </SelectContent>
                                                 </Select>
                                             </div>
                                         </div>
-                                        <div className="grid gap-4 md:grid-cols-2">                   
+                                        <div className="grid gap-4 md:grid-cols-2">
                                             <div className="space-y-2">
                                                 <Label htmlFor="features">Caractéristiques du produit (séparées par des ",") </Label>
                                                 <Input id="features" value={data.features} onChange={(e) => setData('features', e.target.value)} />

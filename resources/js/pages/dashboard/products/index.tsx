@@ -24,14 +24,20 @@ export default function Products({categories,products}:{categories:CategoryItem[
       image: imagePath,
       stock: 0,
       price: item.price,
-      status: item.stock,
+      status: item.in_stock,
     };
+  })
+  const categoryOptions = categories.map((item)=>{
+    return {
+      label:item.name ,
+      value:item.id 
+    }
   })
   return (
     <AppLayout breadcrumbs={breadcrumbs}>
         <Head title='Product' />
         <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
-            <ProductsDataTable categories={categories} />
+            <ProductsDataTable products={data} categories={categoryOptions} />
         </div>
     </AppLayout>
   )

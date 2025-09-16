@@ -11,7 +11,7 @@ export interface SimilarProduct {
 export interface CreateProductItem {
   name: string;
   slug: string;
-  category_id: string;
+  category_id: number;
   price: number;
   original_price: number;
   description: string;
@@ -34,5 +34,5 @@ export interface ProductItem {
   images: File[]|null;
   colors: string;
   is_featured: boolean;
-  stock: boolean;
+  in_stock: boolean;
 }
