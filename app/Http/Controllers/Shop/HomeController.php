@@ -24,7 +24,7 @@ class HomeController extends Controller
         
         $product = Product::with('category')
         ->where('slug', $slug)
-        ->firstOrFail($slug);
+        ->firstOrFail();
         // $product -> load('category');
 
         // $similarProducts = Product::similar($product->id)->get();

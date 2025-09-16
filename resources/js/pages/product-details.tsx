@@ -134,7 +134,7 @@ const frequentlyBoughtTogether: FrequentlyBoughtTogether[] = [
   },
 ];
 
-const ProductDetails = ({product,similarProducts}:{product:Product, similarProducts:SimilarProduct}) => {
+const ProductDetails = ({product,similarProducts}:{product:Product, similarProducts:SimilarProduct[]}) => {
     console.log(product,similarProducts);
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState(0);
@@ -314,7 +314,7 @@ const ProductDetails = ({product,similarProducts}:{product:Product, similarProdu
               </div>
             </div>
 
-            <div>
+            {/* <div>
               <h3 className="text-sm font-medium text-gray-900">Size</h3>
               <div className="mt-2 flex flex-wrap gap-2">
                 {product.sizes.map((size, index) => (
@@ -331,7 +331,7 @@ const ProductDetails = ({product,similarProducts}:{product:Product, similarProdu
                   </button>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             <div>
               <h3 className="text-sm font-medium text-gray-900">Quantity</h3>
@@ -380,12 +380,14 @@ const ProductDetails = ({product,similarProducts}:{product:Product, similarProdu
           <div>
             <h3 className="text-sm font-medium text-gray-900">Features</h3>
             <ul className="mt-2 space-y-2">
-              {product.features.map((feature, index) => (
-                <li key={index} className="flex items-start">
-                  <Check className="mr-2 h-5 w-5 flex-shrink-0 text-green-500" />
-                  <span className="text-gray-600">{feature}</span>
-                </li>
-              ))}
+              {product.features.map((feature, index) => {
+                return (
+                    <li key={index} className="flex items-start">
+                        <Check className="mr-2 h-5 w-5 flex-shrink-0 text-green-500" />
+                        <span className="text-gray-600">{feature}</span>
+                    </li>
+                )
+              })}
             </ul>
           </div>
         </div>
