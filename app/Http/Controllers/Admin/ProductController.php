@@ -38,6 +38,11 @@ class ProductController extends Controller
         if($request->hasFile('image')){
             $image = $request->file('image')->store('products','public');
         }
+        foreach($request->images as $category){
+            if($request->hasFile('image')){
+                $image = $request->file('image')->store('products','public');
+            }
+        }
 
         $new_category = [
             'name' => $request->name,
