@@ -264,7 +264,7 @@ export default function ProductsDataTable({categories,products}:{
         data.features = typeof data.features === 'string' ? data.features.split(',') : data.features;
         data.category_id = Number(data.category_id);
         console.log(data);
-        router.post('/dashboard/product', data, {
+        router.post('/dashboard/products', data, {
             onFinish: () => {
                 reset();
                 toast.success('Produit creer avec success');
@@ -397,7 +397,7 @@ export default function ProductsDataTable({categories,products}:{
                                         </Button>
                                         <Button disabled={processing} type="submit">
                                             {' '}
-                                            {processing ? 'Creating...' : 'Add Category'}{' '}
+                                            {processing ? 'Creating...' : 'Add Product'}{' '}
                                         </Button>
                                     </DialogFooter>
                                 </form>
