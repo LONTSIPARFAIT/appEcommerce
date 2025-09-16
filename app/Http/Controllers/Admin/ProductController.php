@@ -64,9 +64,10 @@ class ProductController extends Controller
             'category_id' => $request->category_id,
         ];
 
-        $prod = Product::create($new_product);
+        dd($new_product);
+        // $prod = Product::create($new_product);
 
-        dd($prod);
+        // dd($prod);
 
         return to_route('dashboard.products.index');
     }
