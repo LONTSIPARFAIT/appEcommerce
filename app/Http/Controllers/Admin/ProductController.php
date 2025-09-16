@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -19,10 +20,11 @@ class ProductController extends Controller
             'categories' => $categories,
         ]);
     }
-    public function save_category(Request $request){
+    public function save_product(Request $request){
         $request->validate([
             'name' => 'string|required|max:255',
-            'color' => 'string|required',
+            'colors' => 'array|nullable',
+            'features' => 'array|nullable',
             'description' => 'string|nullable',
             'image' => 'required|nullable|max:2048',
         ]);
@@ -47,6 +49,6 @@ class ProductController extends Controller
 
         // dd($cat);
 
-        return to_route('dashboard.categories.index');
+        return to_route('dashboard.products.index');
     }
 }
