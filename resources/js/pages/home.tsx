@@ -3,6 +3,7 @@ import ProductListing from '@/components/frontend/ProductListing'
 import ShopBanner from '@/components/frontend/ShopBanner'
 import ShopFrontLayout from '@/layouts/shop-front-layout'
 import { CategoryItem } from '@/types/categories'
+import { ProductItem } from '@/types/products'
 
 export default function home({ categories,products }:{categories:CategoryItem[],products:ProductItem[]}) {
     console.log(categories);
@@ -12,10 +13,10 @@ export default function home({ categories,products }:{categories:CategoryItem[],
             <div className="container mx-auto max-w-6xl">
                 <ShopBanner />
                 <div className="py-16">
-                    <ShopCategories categories={categories} />  
+                    <ShopCategories categories={categories} />
                 </div>
                 <div className="py-8">
-                    <ProductListing products={products} />  
+                    <ProductListing products={products} />
                 </div>
             </div>
         </div>
