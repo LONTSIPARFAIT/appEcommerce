@@ -257,7 +257,7 @@ const ProductCard: React.FC<{
             </span>
             <div className="flex items-baseline gap-1">
               <span className="font-bold text-lg text-gray-900">
-                ${product.discountPrice.toFixed(2)}
+                ${$discount}
               </span>
               {/* <span className="text-xs font-medium text-red-500">
                 Save $
