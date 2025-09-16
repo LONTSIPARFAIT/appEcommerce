@@ -4,7 +4,7 @@ import ShopBanner from '@/components/frontend/ShopBanner'
 import ShopFrontLayout from '@/layouts/shop-front-layout'
 import { CategoryItem } from '@/types/categories'
 
-export default function home({categories}:{categories:CategoryItem[]}) {
+export default function home({ categories,products }:{categories:CategoryItem[],products}) {
     console.log(categories);
   return (
     <ShopFrontLayout>
