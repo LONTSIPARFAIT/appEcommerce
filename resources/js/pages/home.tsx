@@ -4,7 +4,7 @@ import ShopBanner from '@/components/frontend/ShopBanner'
 import ShopFrontLayout from '@/layouts/shop-front-layout'
 import { CategoryItem } from '@/types/categories'
 
-export default function home({ categories,products }:{categories:CategoryItem[],products}) {
+export default function home({ categories,products }:{categories:CategoryItem[],products:ProductItem[]}) {
     console.log(categories);
   return (
     <ShopFrontLayout>
@@ -15,7 +15,7 @@ export default function home({ categories,products }:{categories:CategoryItem[],
                     <ShopCategories categories={categories} />  
                 </div>
                 <div className="py-8">
-                    <ProductListing />  
+                    <ProductListing products={products} />  
                 </div>
             </div>
         </div>
