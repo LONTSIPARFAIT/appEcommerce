@@ -53,8 +53,15 @@ class ProductController extends Controller
         $new_product = [
             'name' => $request->name,
             'slug' => $slug,
+            'colors' => $request->colors,
             'image' => $image,
-            'color' => $request->color,
+            'description' => $request->description,
+            'is_featured' => $request->is_featured,
+            'price' => $request->price,
+            'original_price' => $request->original_price,
+            'features' => $request->featured,
+            'images' => $images,
+            'category_id' => $request->category_id,
         ];
 
         $cat = Category::create($new_product);
