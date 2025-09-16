@@ -22,7 +22,7 @@ class HomeController extends Controller
     }
     public function show_detail($slug){
         
-        $product = Product::firstOrFail($slug);
+        $product = Product::with('category')->where('dlug')->firstOrFail($slug)->get();
         $product -> load('category');
 
         $similarProducts = Product::similar( $product->id)->get();
