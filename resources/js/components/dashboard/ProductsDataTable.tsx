@@ -262,6 +262,7 @@ export default function ProductsDataTable({categories,products}:{
         data.images = images;
         data.colors = typeof data.colors === 'string' ? data.colors.split(',') : data.colors;
         data.features = typeof data.features === 'string' ? data.features.split(',') : data.features;
+        data.category_id = Number(data.category_id);
         console.log(data);
         router.post('/dashboard/product', data, {
             onFinish: () => {
