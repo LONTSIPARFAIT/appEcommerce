@@ -23,6 +23,7 @@ class ProductController extends Controller
     public function save_product(Request $request){
         $request->validate([
             'name' => 'string|required|max:255',
+            'category_id' => 'string|required',
             'colors' => 'array|nullable',
             'features' => 'array|nullable',
             'description' => 'string|nullable',

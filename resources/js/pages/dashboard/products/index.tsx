@@ -1,4 +1,4 @@
-import ProductsDataTable from '@/components/dashboard/ProductsDataTable';
+import ProductsDataTable, { Product } from '@/components/dashboard/ProductsDataTable';
 import AppLayout from '@/layouts/app-layout'
 import { BreadcrumbItem } from '@/types';
 import { CategoryItem } from '@/types/categories';
@@ -14,7 +14,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Products({categories,products}:{categories:CategoryItem[], products:ProductItem[]}) {
-  const data = products.map((item)=>{
+  const data:Product[] = products.map((item)=>{
   const imagePath = `/storage/${item.image}`;
     return  {
       id: item.id,
@@ -24,7 +24,7 @@ export default function Products({categories,products}:{categories:CategoryItem[
       image: imagePath,
       stock: 0,
       price: item.price,
-      status: item.in_stock,
+      status: item.in_stock ? "in-stock":"out-stock",
     };
   })
   const categoryOptions = categories.map((item)=>{
