@@ -245,7 +245,7 @@ export default function ProductsDataTable({categories,products}:{
     const { data, setData, processing, errors, reset } = useForm<Required<CreateProductItem>>({
         name: '',
         slug: '',
-        category_id: 1,
+        category_id: '1',
         colors: '',
         image: null,
         description: '',
@@ -336,8 +336,8 @@ export default function ProductsDataTable({categories,products}:{
                                             <div className="space-y-2">
                                                 <Label htmlFor="category">Selectionner la Categorie</Label>
                                                 <Select onValueChange={(value) => setData('category_id', value)} defaultValue={'1'}>
-                                                    <SelectTrigger>
-                                                        <SelectValue placeholder="Select a verified email to display" />
+                                                    <SelectTrigger className='w-[180px]'>
+                                                        <SelectValue  placeholder="Select a category to display" />
                                                     </SelectTrigger>
                                                     <SelectContent>
                                                         {categories.map((item)=>{
@@ -356,7 +356,7 @@ export default function ProductsDataTable({categories,products}:{
                                             <div className="items-top flex space-x-2">
                                                 <Checkbox
                                                     checked={data.is_featured}
-                                                    onCheckedChange={(value) => setData('is_featured', value)}
+                                                    onCheckedChange={(value) => setData('is_featured', !!value)}
                                                     id="isFeatures"
                                                 />
                                                 <div className="grid gap-1.5 leading-none">
