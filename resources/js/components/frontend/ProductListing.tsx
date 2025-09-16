@@ -252,7 +252,8 @@ const ProductCard: React.FC<{
         <div className="mt-auto pt-3 flex items-end justify-between border-t border-gray-100">
           <div className="flex flex-col">
             <span className="text-xs text-gray-500 line-through">
-              ${product.originalPrice.toFixed(2)}
+              ${product.original_price}
+              {/* ${product.original_price.toFixed(2)} */}
             </span>
             <div className="flex items-baseline gap-1">
               <span className="font-bold text-lg text-gray-900">
