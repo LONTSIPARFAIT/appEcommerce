@@ -191,22 +191,22 @@ const ProductCard: React.FC<{
               {discountPercentage}% OFF
             </span>
           )}
-          {product.isNew && (
+          {/* {product.isNew && (
             <span className="px-2 py-1 bg-emerald-500 text-white text-xs font-bold rounded-lg shadow-sm">
               NEW
             </span>
-          )}
-          {product.stock <= 10 && (
+          )} */}
+          {/* {product.stock <= 10 && (
             <span className="px-2 py-1 bg-amber-500 text-white text-xs font-bold rounded-lg shadow-sm">
               Only {product.stock} left
             </span>
-          )}
+          )} */}
         </div>
 
         {/* Action buttons */}
-        <div className="absolute top-3 right-3">
+        {/* <div className="absolute top-3 right-3">
           <button
-            onClick={() => onFavoriteToggle(product.id)}
+            // onClick={() => onFavoriteToggle(product.id)}
             className="flex items-center justify-center w-8 h-8 mb-2 rounded-full bg-white bg-opacity-90 hover:bg-opacity-100 shadow-sm transition-all duration-200"
             aria-label="Add to favorites"
           >
@@ -217,7 +217,7 @@ const ProductCard: React.FC<{
               }
             />
           </button>
-        </div>
+        </div> */}
 
         {/* Quick actions overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -234,16 +234,16 @@ const ProductCard: React.FC<{
       <div className="flex flex-col p-4 flex-grow">
         <div className="mb-1">
           <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">
-            {product.category}
+            {product.category.name}
           </span>
           <h3 className="text-sm font-medium text-gray-900 line-clamp-1 mt-1">
             {product.name}
           </h3>
         </div>
 
-        <div className="mt-1 mb-3">
+        {/* <div className="mt-1 mb-3">
           <StarRating rating={product.rating} />
-        </div>
+        </div> */}
 
         <p className="text-xs text-gray-500 mb-3 line-clamp-2">
           {product.description}
