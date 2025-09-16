@@ -166,25 +166,29 @@ const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
 
 // Product Card Component with discount
 const ProductCard: React.FC<{
-  product: Product;
-  onFavoriteToggle: (id: string) => void;
+  product: ProductItem;
+//   onFavoriteToggle: (id: string) => void;
   onAddToCart: (id: string) => void;
-}> = ({ product, onFavoriteToggle, onAddToCart }) => {
+}> = ({ product, onAddToCart }) => {
+    const imagePath = `storage/products/${product.image}`;
+    const discount = product.original_price - product.price;
+    const discountPercentage = (discount / product.original_price) * 100;
+    // const formattedDiscountPercentage = discountPercentage.toFixed(0);
   return (
     <div className="group relative flex flex-col h-full rounded-xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-all duration-300">
       {/* Image container with aspect ratio */}
       <div className="relative w-full pb-[100%] bg-gray-50 overflow-hidden">
         <img
-          src={product.image}
+          src={imagePath}
           alt={product.name}
           className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
         />
 
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-2">
-          {product.discountPercentage > 0 && (
+          {discountPercentage > 0 && (
             <span className="px-2 py-1 bg-red-500 text-white text-xs font-bold rounded-lg shadow-sm">
-              {product.discountPercentage}% OFF
+              {discountPercentage}% OFF
             </span>
           )}
           {product.isNew && (
@@ -397,7 +401,6 @@ const ProductListing = ({products}:{products:ProductItem[]}) => {
             >
               <ProductCard
                 product={product}
-                onFavoriteToggle={toggleFavorite}
                 onAddToCart={addToCart}
               />
             </div>
