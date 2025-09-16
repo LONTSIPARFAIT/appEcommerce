@@ -260,6 +260,8 @@ export default function ProductsDataTable({categories,products}:{
         e.preventDefault();
         data.image = images[0];
         data.images = images;
+        data.colors = data.colors.split(',');
+        data.features = data.features.split(',');
         console.log(data);
         router.post('/dashboard/product', data, {
             onFinish: () => {

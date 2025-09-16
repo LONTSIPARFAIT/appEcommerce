@@ -15,10 +15,10 @@ export interface CreateProductItem {
   price: number;
   original_price: number;
   description: string;
-  features: string;
+  features: string|string[];
   image: File|null;
   images: File[]|null;
-  colors: string;
+  colors: string|string[];
   is_featured: boolean;
 }
 export interface ProductItem {
