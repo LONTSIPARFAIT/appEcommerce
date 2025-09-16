@@ -15,7 +15,7 @@ class CategoryController extends Controller
             'name' => 'string|required|max:255',
             'color' => 'string|required',
             'description' => 'string|nullable',
-            'image' => 'required|nullable|max:2048',
+            'image' => 'image|nullable|max:2048',
         ]);
 
         //slug

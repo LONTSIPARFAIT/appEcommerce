@@ -26,7 +26,9 @@ class ProductController extends Controller
             'colors' => 'array|nullable',
             'features' => 'array|nullable',
             'description' => 'string|nullable',
-            'image' => 'required|nullable|max:2048',
+            'image' => 'image|nullable|max:2048',
+            'images' => 'nullable|max:2048',
+            'images.*' => 'image|max:2048',
         ]);
 
         //slug
@@ -38,20 +40,19 @@ class ProductController extends Controller
         if($request->hasFile('image')){
             $image = $request->file('image')->store('products','public');
         }
-        foreach($request->images as $category){
-            if($request->hasFile('image')){
-                $image = $request->file('image')->store('products','public');
-            }
+        
+        if ($request->hasFile('images')) {
+            #
         }
 
-        $new_category = [
+        $new_product = [
             'name' => $request->name,
             'slug' => $slug,
             'image' => $image,
             'color' => $request->color,
         ];
 
-        $cat = Category::create($new_category);
+        $cat = Category::create($new_product);
 
         // dd($cat);
 
