@@ -341,7 +341,7 @@ export default function ProductsDataTable({categories,products}:{
                                                     </SelectTrigger>
                                                     <SelectContent>
                                                         {categories.map((item)=>{
-                                                            return <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>
+                                                            return <SelectItem key={item.value} value={item.value.toString()}>{item.label}</SelectItem>
                                                         })}
                                                     </SelectContent>
                                                 </Select>
