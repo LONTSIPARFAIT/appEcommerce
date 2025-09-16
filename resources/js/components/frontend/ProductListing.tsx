@@ -280,7 +280,7 @@ const ProductCard: React.FC<{
 };
 
 // Main Carousel Component
-const ProductListing = () => {
+const ProductListing = ({products}) => {
   const [products, setProducts] = useState<Product[]>(sampleProducts);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleProducts, setVisibleProducts] = useState(4);
