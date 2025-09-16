@@ -41,8 +41,13 @@ class ProductController extends Controller
             $image = $request->file('image')->store('products','public');
         }
         
+        $images = [];
         if ($request->hasFile('images')) {
-            #
+            foreach ($request->file('images') as $image) {
+                $images[] = $image->store('products/images', 'public');
+            }
+
+            // $validated['images'] = $images;
         }
 
         $new_product = [
