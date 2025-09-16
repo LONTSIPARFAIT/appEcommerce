@@ -8,7 +8,7 @@ use Inertia\Inertia;
 
 Route::get('/', [HomeController::class, 'get_home_data'])->name('home');
 
-Route::get('/products/${slug}', [HomeController::class, 'show_detail'])->name('detail');
+Route::get('/products/{slug}', [HomeController::class, 'show_detail'])->name('detail');
 
 Route::get('/about', function () {
     return Inertia::render('public/about');
