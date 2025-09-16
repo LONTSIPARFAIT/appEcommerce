@@ -19,4 +19,13 @@ class ProductController extends Controller
             'categories' => $categories,
         ]);
     }
+    public function save_product(){
+        $products = Product::latest()->get();
+        $categories = Category::latest()->get();
+
+        return Inertia::render('dashboard/products/index', [
+            'products' => $products,
+            'categories' => $categories,
+        ]);
+    }
 }
