@@ -280,8 +280,8 @@ const ProductCard: React.FC<{
 };
 
 // Main Carousel Component
-const ProductListing = ({products}) => {
-  const [products, setProducts] = useState<Product[]>(sampleProducts);
+const ProductListing = ({products}:{products:ProductItem[]}) => {
+  // const [products, setProducts] = useState<Product[]>(sampleProducts);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleProducts, setVisibleProducts] = useState(4);
   const carouselRef = useRef<HTMLDivElement>(null);
