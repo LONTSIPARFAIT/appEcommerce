@@ -11,6 +11,7 @@ import {
   Check,
 } from "lucide-react";
 import SimillarProducts from "@/components/frontend/SimillarProducts";
+// import { features } from 'process';
 
 // Types
 interface Product {
@@ -38,77 +39,77 @@ interface FrequentlyBoughtTogether {
 }
 
 // Mock data
-const product: Product = {
-  id: "prod-001",
-  name: "Premium Ergonomic Office Chair",
-  price: 349.99,
-  originalPrice: 499.99,
-  rating: 4.8,
-  reviewCount: 254,
-  description:
-    "Experience unparalleled comfort with our Premium Ergonomic Office Chair, designed to provide optimal support during long working hours. Featuring adjustable lumbar support, breathable mesh back, and premium cushioning, this chair is the perfect blend of style and functionality for your workspace.",
-  features: [
-    "Adjustable height and armrests",
-    "Breathable mesh back with lumbar support",
-    "Premium cushioning with memory foam",
-    "360° swivel with smooth-rolling casters",
-    "Weight capacity up to 300 lbs",
-    "Eco-friendly materials",
-  ],
-  images: [
-    "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    "https://images.unsplash.com/photo-1589384267710-7a170981ca78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-  ],
-  colors: [
-    { name: "Classic Black", value: "#000000" },
-    { name: "Platinum Gray", value: "#8e8e8e" },
-    { name: "Navy Blue", value: "#15317E" },
-    { name: "Burgundy", value: "#8C001A" },
-  ],
-  sizes: ["Standard", "Large", "Extra Large"],
-  inStock: true,
-};
+// const product: Product = {
+//   id: "prod-001",
+//   name: "Premium Ergonomic Office Chair",
+//   price: 349.99,
+//   originalPrice: 499.99,
+//   rating: 4.8,
+//   reviewCount: 254,
+//   description:
+//     "Experience unparalleled comfort with our Premium Ergonomic Office Chair, designed to provide optimal support during long working hours. Featuring adjustable lumbar support, breathable mesh back, and premium cushioning, this chair is the perfect blend of style and functionality for your workspace.",
+//   features: [
+//     "Adjustable height and armrests",
+//     "Breathable mesh back with lumbar support",
+//     "Premium cushioning with memory foam",
+//     "360° swivel with smooth-rolling casters",
+//     "Weight capacity up to 300 lbs",
+//     "Eco-friendly materials",
+//   ],
+//   images: [
+//     "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+//     "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+//     "https://images.unsplash.com/photo-1589384267710-7a170981ca78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+//     "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+//   ],
+//   colors: [
+//     { name: "Classic Black", value: "#000000" },
+//     { name: "Platinum Gray", value: "#8e8e8e" },
+//     { name: "Navy Blue", value: "#15317E" },
+//     { name: "Burgundy", value: "#8C001A" },
+//   ],
+//   sizes: ["Standard", "Large", "Extra Large"],
+//   inStock: true,
+// };
 
-const similarProducts: SimilarProduct[] = [
-  {
-    id: "prod-002",
-    name: "Executive High-Back Office Chair",
-    price: 299.99,
-    rating: 4.6,
-    reviewCount: 187,
-    image:
-      "https://images.unsplash.com/photo-1579656381226-5fc0f0100c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    id: "prod-003",
-    name: "Modern Ergonomic Task Chair",
-    price: 249.99,
-    rating: 4.5,
-    reviewCount: 142,
-    image:
-      "https://images.unsplash.com/photo-1589384267710-7a170981ca78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    id: "prod-004",
-    name: "Designer Mesh Office Chair",
-    price: 279.99,
-    rating: 4.7,
-    reviewCount: 213,
-    image:
-      "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    id: "prod-005",
-    name: "Luxury Leather Executive Chair",
-    price: 399.99,
-    rating: 4.9,
-    reviewCount: 176,
-    image:
-      "https://images.unsplash.com/photo-1519947486511-46149fa0a254?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-  },
-];
+// const similarProducts: SimilarProduct[] = [
+//   {
+//     id: "prod-002",
+//     name: "Executive High-Back Office Chair",
+//     price: 299.99,
+//     rating: 4.6,
+//     reviewCount: 187,
+//     image:
+//       "https://images.unsplash.com/photo-1579656381226-5fc0f0100c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+//   },
+//   {
+//     id: "prod-003",
+//     name: "Modern Ergonomic Task Chair",
+//     price: 249.99,
+//     rating: 4.5,
+//     reviewCount: 142,
+//     image:
+//       "https://images.unsplash.com/photo-1589384267710-7a170981ca78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+//   },
+//   {
+//     id: "prod-004",
+//     name: "Designer Mesh Office Chair",
+//     price: 279.99,
+//     rating: 4.7,
+//     reviewCount: 213,
+//     image:
+//       "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+//   },
+//   {
+//     id: "prod-005",
+//     name: "Luxury Leather Executive Chair",
+//     price: 399.99,
+//     rating: 4.9,
+//     reviewCount: 176,
+//     image:
+//       "https://images.unsplash.com/photo-1519947486511-46149fa0a254?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+//   },
+// ];
 
 const frequentlyBoughtTogether: FrequentlyBoughtTogether[] = [
   {
@@ -138,7 +139,7 @@ const ProductDetails = ({product,similarProducts}:{product:Product, similarProdu
     console.log(product,similarProducts);
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState(0);
-  const [selectedSize, setSelectedSize] = useState(0);
+//   const [selectedSize, setSelectedSize] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [bundleItems, setBundleItems] = useState<string[]>([product.id]);
   
@@ -162,7 +163,7 @@ const ProductDetails = ({product,similarProducts}:{product:Product, similarProdu
       }
     });
 
-    return total.toFixed(2);
+    return total;
   };
 
   return (
@@ -378,9 +379,10 @@ const ProductDetails = ({product,similarProducts}:{product:Product, similarProdu
           </div>
 
           <div>
-            <h3 className="text-sm font-medium text-gray-900">Features</h3>
+            <h3 className="text-sm font-medium text-gray-900">Caractéristiques</h3>
             <ul className="mt-2 space-y-2">
-              {product.features.map((feature, index) => {
+              {Array.isArray(product.features) && product.features.map((feature, index) => {
+                console.log("Caractéristiques du produit :", product.features);
                 return (
                     <li key={index} className="flex items-start">
                         <Check className="mr-2 h-5 w-5 flex-shrink-0 text-green-500" />
@@ -455,7 +457,7 @@ const ProductDetails = ({product,similarProducts}:{product:Product, similarProdu
                 {bundleItems.includes(product.id) && (
                   <li className="flex justify-between">
                     <span>{product.name}</span>
-                    <span>${product.price.toFixed(2)}</span>
+                    <span>${product.price}</span>
                   </li>
                 )}
                 {frequentlyBoughtTogether.map(

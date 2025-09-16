@@ -29,7 +29,7 @@ export interface ProductItem {
   price: number;
   original_price: number;
   description: string;
-  features: string;
+  features: string|string[];
   image: string|null;
   images: string|null;
   colors: string;
