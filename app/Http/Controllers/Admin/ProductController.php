@@ -64,7 +64,7 @@ class ProductController extends Controller
             'category_id' => $request->category_id,
         ];
 
-        $cat = Category::create($new_product);
+        $prod = Product::create($new_product);
 
         // dd($cat);
 
