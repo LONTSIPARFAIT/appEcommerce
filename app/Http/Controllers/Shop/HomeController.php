@@ -22,10 +22,13 @@ class HomeController extends Controller
     }
     public function show_detail($slug){
         
-        $product = Product::with('category')->where('dlug')->firstOrFail($slug)->get();
-        $product -> load('category');
+        $product = Product::with('category')
+        ->where('slug', $slug)
+        ->firstOrFail($slug);
+        // $product -> load('category');
 
-        $similarProducts = Product::similar( $product->id)->get();
+        // $similarProducts = Product::similar($product->id)->get();
+        $similarProducts = [];
 
         return Inertia::render('product-details', [
             'product' => $product,

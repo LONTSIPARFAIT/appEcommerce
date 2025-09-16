@@ -137,7 +137,7 @@ const frequentlyBoughtTogether: FrequentlyBoughtTogether[] = [
   },
 ];
 
-const ProductDetails = ({product,similarProducts}:{product:Product[], similarProducts:SimilarProduct}) => {
+const ProductDetails = ({product,similarProducts}:{product:Product, similarProducts:SimilarProduct}) => {
     console.log(product,similarProducts);
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState(0);
@@ -259,7 +259,7 @@ const ProductDetails = ({product,similarProducts}:{product:Product[], similarPro
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-3xl font-bold text-gray-900">
-                  ${product.price.toFixed(2)}
+                  ${product.price}
                 </p>
                 {product.originalPrice && (
                   <p className="text-sm text-gray-500 line-through">
@@ -288,23 +288,26 @@ const ProductDetails = ({product,similarProducts}:{product:Product[], similarPro
             <div>
               <h3 className="text-sm font-medium text-gray-900">Color</h3>
               <div className="mt-2 flex space-x-3">
-                {product.colors.map((color, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setSelectedColor(index)}
-                    className={`relative h-10 w-10 rounded-full ${
-                      selectedColor === index
-                        ? "ring-2 ring-offset-2 ring-indigo-600"
-                        : ""
-                    }`}
-                    title={color.name}
-                  >
-                    <span
-                      className="absolute inset-0 rounded-full"
-                      style={{ backgroundColor: color.value }}
-                    ></span>
-                  </button>
-                ))}
+                {product.colors.map((color, index) => {
+                    const color = {}
+                    return (
+                        <button
+                            key={index}
+                            onClick={() => setSelectedColor(index)}
+                            className={`relative h-10 w-10 rounded-full ${
+                            selectedColor === index
+                                ? "ring-2 ring-offset-2 ring-indigo-600"
+                                : ""
+                            }`}
+                            title={color.name}
+                        >
+                            <span
+                            className="absolute inset-0 rounded-full"
+                            style={{ backgroundColor: color.value }}
+                            ></span>
+                        </button>
+                    )
+                })}
               </div>
             </div>
 
